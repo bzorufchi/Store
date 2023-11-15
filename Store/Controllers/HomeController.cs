@@ -20,18 +20,24 @@ namespace Store.Controllers
         {
             var userapi = new UserApiService(context);
             // var data = userapi.GetAllUsers();
-            userapi.AddUser(new AddUserInput
-            {
-                FirstName = "کتایون",
-                FamilyName = "خیرآبادی",
-                UserName = "2282961862",
-                Password = "2282961862",
-                NationalCode= "2282961862",
-                BirthDate = DateTime.Now.Date,
-                Gender=0,
-                PhoneNumber="09199384815",
-                RoleId = 1
-            });
+            //userapi.AddUser(new AddUserInput
+            //{
+            //    FirstName = "کتایون",
+            //    FamilyName = "خیرآبادی",
+            //    UserName = "2282961862",
+            //    Password = "2282961862",
+            //    NationalCode= "2282961862",
+            //    BirthDate = DateTime.Now.Date,
+            //    Gender=0,
+            //    PhoneNumber="09199384815",
+            //    RoleId = 1
+            //});
+            //userapi.UpdateUser(new UpdateUserInput
+            //{
+            //    Id=4,
+            //    PhoneNumber = "09199384815"
+            //});
+            userapi.DeleteUser(6);
             return View();
         }
 

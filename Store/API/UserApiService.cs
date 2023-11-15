@@ -39,5 +39,31 @@ namespace Store.API
             });
             context.SaveChanges();
         }
+
+        public string UpdateUser(UpdateUserInput input)
+        {
+
+            var user = context.User.Where(u=> u.Id==input.Id).FirstOrDefault();
+            user.UserName = input.UserName;
+            user.PhoneNumber = input.PhoneNumber;
+            user.RoleId = input.RoleId;
+            user.BirthDate = input.BirthDate;
+            user.FirstName = input.FirstName;
+            user.FamilyName = input.FamilyName;
+            user.Gender = input.Gender;
+            user.NationalCode = input.NationalCode;
+            user.Password = input.Password;
+
+            context.SaveChanges();
+            return "ثبت شد";
+        }
+
+        public string DeleteUser(int id)
+        {
+            var user = context.User.Where(u => u.Id==id).FirstOrDefault();
+            context.User.Remove(user);
+            context.SaveChanges();
+            return "";
+        }
     }
 }
