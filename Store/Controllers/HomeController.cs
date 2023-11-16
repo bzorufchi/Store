@@ -39,6 +39,7 @@ namespace Store.Controllers
             //});
             userapi.DeleteUser(6);
             return View();
+
         }
 
         public IActionResult Privacy()

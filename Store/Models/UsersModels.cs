@@ -34,4 +34,9 @@
         public string PhoneNumber { get; set; }
         public int Gender { get; set; }
     }
+    public class DeleteUserInput
+    {
+        public int Id { get; set; }
+       
+    }
 }

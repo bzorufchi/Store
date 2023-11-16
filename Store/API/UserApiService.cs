@@ -58,12 +58,12 @@ namespace Store.API
             return "ثبت شد";
         }
 
-        public string DeleteUser(int id)
+        public string DeleteUser(DeleteUserInput input)
         {
-            var user = context.User.Where(u => u.Id==id).FirstOrDefault();
+            var user = context.User.Where(u => u.Id==input.Id).FirstOrDefault();
             context.User.Remove(user);
             context.SaveChanges();
-            return "";
+            return "کاربر حذف شد";
         }
     }
 }

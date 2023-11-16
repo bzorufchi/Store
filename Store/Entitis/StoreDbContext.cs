@@ -18,6 +18,7 @@ namespace Store.Entitis
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Brands> Brands { get; set; }
         public virtual DbSet<Comments> Comments { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Country> Country { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
         public virtual DbSet<Product> Product { get; set; }
