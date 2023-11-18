@@ -63,7 +63,7 @@ namespace Store.API
                 Product.OrginalPrice = input.OrginalPrice;
                 Product.DiscountPrice = input.DiscountPrice;
                 Product.IsActive = input.IsActive;
-                Product.count = input.Count;
+                Product.Count = input.Count;
             Product.Like = input.Like;
                 Product.discountpercent = input.discountpercent;
                 Product.CreationDate = input.CreationDate;
@@ -75,7 +75,7 @@ namespace Store.API
         public string DeleteProduct(DeleteProduct input)
         {
             var Product = context.Product.Where(p => p.Id ==input.Id).FirstOrDefault();
-            context.Role.Remove(Product);
+            context.Product.Remove(Product);
             context.SaveChanges();
             return "محصول کاربر حذف شد";
         }

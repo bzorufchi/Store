@@ -37,7 +37,7 @@ namespace Store.Controllers
             //    Id=4,
             //    PhoneNumber = "09199384815"
             //});
-            userapi.DeleteUser(6);
+            //userapi.DeleteUser(6);
             return View();
 
         }
