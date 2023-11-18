@@ -28,7 +28,7 @@ namespace Store.API
             context.User.Add(new User()
             {
                 BirthDate = input.BirthDate,
-                FirstName = input.FirstName,
+                FirstName = input.FirstName, 
                 FamilyName = input.FamilyName,
                 Gender = input.Gender,
                 NationalCode = input.NationalCode,
