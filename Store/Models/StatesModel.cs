@@ -6,14 +6,10 @@ namespace Store.Models
     {
         public int StateName { get; set; }
         public DateTime CreateDate { get; set; }
-
-        public Orders Orders { get; set; }
     }
     public class AddStatesInput {
         public int StateName { get; set; }
         public DateTime CreateDate { get; set; }
-
-        public Orders Orders { get; set; }
     }
     public class UpdateStatesInput
     {
@@ -21,7 +17,6 @@ namespace Store.Models
         public int StateName { get; set; }
         public DateTime CreateDate { get; set; }
 
-        public Orders Orders { get; set; }
     }
     public class DeleteStatesInput
     {

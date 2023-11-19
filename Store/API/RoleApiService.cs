@@ -24,9 +24,7 @@ namespace Store.API
         {
             context.Role.Add(new Role()
             {
-
                 RoleName = input.RoleName,
-                CreateDate = input.CreateDate,
             });
             context.SaveChanges();
         }
@@ -35,7 +33,6 @@ namespace Store.API
 
             var Role = context.Role.Where(R => R.Id == input.Id).FirstOrDefault();
             Role.RoleName = input.RoleName;
-            Role.CreateDate = input.CreateDate;
 
             context.SaveChanges();
             return "نقش کاربر بروزرسانی شد";

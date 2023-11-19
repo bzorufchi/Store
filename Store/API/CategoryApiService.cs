@@ -24,7 +24,6 @@ namespace Store.API
             context.Category.Add(new Category {
               CategoryName = input.CategoryName,
               CategoryParent =input.CategoryParrent,
-              CreateDate = input.CreateDate,
               Description = input.CategoryDescription
             });
             context.SaveChanges();
@@ -34,7 +33,6 @@ namespace Store.API
             var category= context.Category.Where(c => c.Id == input.Id).FirstOrDefault();
             category.CategoryName = input.CategoryName;
             category.Description = input.CategoryDescription;
-            category.CreateDate=input.CreateDate;
             category.CategoryParent=input.CategoryParrent;
             context.SaveChanges();
             return "دسته بندی بروزرسانی شد";
@@ -47,15 +45,6 @@ namespace Store.API
             return "دسته بندی حذف شد";
         }
 
-        public override bool Equals(object? obj)
-        {
-            return obj is CategoryApiService service &&
-                   EqualityComparer<StoreDbContext>.Default.Equals(context, service.context);
-        }
-
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(context);
-        }
+      
     }
 }

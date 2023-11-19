@@ -17,7 +17,7 @@ namespace Store.API
             {
                 StateName = S.StateName,
                 CreateDate = S.CreateDate,
-                Orders = S.Orders,
+             
             }).ToList();
             return data;
         }
@@ -28,18 +28,15 @@ namespace Store.API
 
                 StateName = input.StateName,
                 CreateDate = input.CreateDate,
-                Orders = input.Orders,
+              
             });
             context.SaveChanges();
         }
         public string UpdateStates(UpdateStatesInput input)
         {
-
             var States = context.States.Where(S => S.Id == input.Id).FirstOrDefault();
             States.StateName = input.StateName;
             States.CreateDate = input.CreateDate;
-            States.Orders = input.Orders;
-
             context.SaveChanges();
             return "وضعیت کاربر بروزرسانی شد";
         }

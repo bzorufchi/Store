@@ -35,8 +35,6 @@ namespace Store.API
         {
             context.Product.Add(new Product()
             {
-
-               
                 ProductName = input.ProductName,
                 ProductDescription = input.ProductDescription,
                 ImageURL = input.ImageURL,
@@ -46,7 +44,6 @@ namespace Store.API
                 Count = input.Count,
                 Like = input.Like,
                 discountpercent = input.discountpercent,
-                CreationDate = input.CreationDate
             });
             context.SaveChanges();
         }
@@ -66,8 +63,7 @@ namespace Store.API
                 Product.Count = input.Count;
             Product.Like = input.Like;
                 Product.discountpercent = input.discountpercent;
-                Product.CreationDate = input.CreationDate;
-
+         
             context.SaveChanges();
             return "محصول کاربر بروزرسانی شد";
         }

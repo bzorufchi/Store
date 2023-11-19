@@ -21,7 +21,6 @@ namespace Store.API
                 otal_price_of_discounts=o.otal_price_of_discounts,
                 Original_price_payable = o.Original_price_payable,
               
-
             }).ToList();
             return data;
         }
@@ -29,8 +28,6 @@ namespace Store.API
         {
             context.Orders.Add(new Orders()
             {
-
-                CreateDate = input.CreateDate,
                 count = input.count,
                 FixedPrice=input.FixedPrice,
                 otal_price_of_discounts=input.otal_price_of_discounts,
@@ -42,7 +39,6 @@ namespace Store.API
         {
 
             var Orders = context.Orders.Where(o => o.Id == input.Id).FirstOrDefault();
-            Orders.CreateDate = input.CreateDate;
             Orders.count = input.count;
             Orders.FixedPrice = input.FixedPrice;
             Orders.otal_price_of_discounts = input.otal_price_of_discounts;

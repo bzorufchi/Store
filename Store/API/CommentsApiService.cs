@@ -31,7 +31,6 @@ namespace Store.API
                 Text = input.Text,
                 IsAccepted = input.IsAccepted,
                 IsAcceptedDate=input.IsAcceptedDate,
-                CreateDate=input.CreateDate,
                 ByUserId = input.ByUserId,
                 UserId=input.UserId,
                 ProductId=input.ProductId,
@@ -46,7 +45,6 @@ namespace Store.API
             Comments.Text = input.Text;
             Comments.IsAccepted = input.IsAccepted;
             Comments.IsAcceptedDate = input.IsAcceptedDate;
-            Comments.CreateDate = input.CreateDate;
             Comments.ByUserId = input.ByUserId;
             Comments.UserId = input.UserId;
             Comments.ProductId = input.ProductId;

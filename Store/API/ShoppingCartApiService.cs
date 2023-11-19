@@ -27,7 +27,7 @@ namespace Store.API
         {
             context.ShoppingCart.Add(new ShoppingCart()
             {
-                CreateDate = input.CreateDate,
+                CreateDate = DateTime.Now,
                 PeymentState = input.PeymentState,
                 PeymentMethod = input.PeymentMethod,
                 Count = input.Count,
@@ -39,7 +39,6 @@ namespace Store.API
         {
 
             var ShoppingCart = context.ShoppingCart.Where(S => S.Id ==input.id).FirstOrDefault();
-            ShoppingCart.CreateDate = input.CreateDate;
             ShoppingCart.PeymentState = input.PeymentState;
             ShoppingCart.PeymentMethod=input.PeymentMethod;
             ShoppingCart.Count = input.Count;

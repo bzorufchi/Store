@@ -25,9 +25,7 @@ namespace Store.API
         {
             context.Country.Add(new Country()
             {
-
                 CountryName = input.CountryName,
-                CreateDate = input.CreateDate,
             });
             context.SaveChanges();
         }
@@ -36,7 +34,6 @@ namespace Store.API
 
             var Country = context.Country.Where(c => c.Id == input.Id).FirstOrDefault();
             Country.CountryName = input.CountryName;
-            Country.CreateDate = input.CreateDate;
 
             context.SaveChanges();
             return " کشور بروزرسانی شد";

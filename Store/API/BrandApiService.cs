@@ -25,9 +25,7 @@ namespace Store.API
         {
             context.Brands.Add(new Brands()
             {
-
                 BrandName = input.BrandName,
-                CreateDate = input.CreateDate,
                 Products=input.Products,
             });
             context.SaveChanges();
@@ -37,7 +35,6 @@ namespace Store.API
 
             var Brands = context.Brands.Where(B => B.Id == input.Id).FirstOrDefault();
             Brands.BrandName = input.BrandName;
-            Brands.CreateDate = input.CreateDate;
             Brands.Products = input.Products;
 
             context.SaveChanges();
