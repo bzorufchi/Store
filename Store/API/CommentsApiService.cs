@@ -23,7 +23,20 @@ namespace Store.API
             }).ToList();
             return data;
         }
-        public void Addcomments(AddCommentsInput input)
+
+        public List<GetAllCommentsOutput> GetCommentsByProductId(int ProductId)
+        {
+            var data = context.Comments.Where(c => c.ProductId == ProductId).Select(c => new GetAllCommentsOutput()
+            {
+                Text = c.Text,
+                IsAccepted = c.IsAccepted,
+                IsAcceptedDate = c.IsAcceptedDate,
+                CreateDate = c.CreateDate,
+                ByUserId = c.ByUserId
+            }).ToList();
+            return data;
+        }
+            public void Addcomments(AddCommentsInput input)
         {
             context.Comments.Add(new Comments()
             {

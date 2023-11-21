@@ -1,4 +1,5 @@
 ﻿using Store.Entitis;
+using System.ComponentModel.DataAnnotations;
 
 namespace Store.Models
 {
@@ -6,24 +7,18 @@ namespace Store.Models
     {   public int Id {get;set;}
         public string BrandName { get; set; } = string.Empty;
         public DateTime CreateDate { get; set; }
-
-        public ICollection<Product> Products { get; set; }
     }
     public class AddBrandsInput
     {
         public int Id { get; set; }
         public string BrandName { get; set; } = string.Empty;
         public DateTime CreateDate { get; set; }
-
-        public ICollection<Product> Products { get; set; }
     }
     public class UpdateBrandInput
     {
         public int Id { get; set; }
         public string BrandName { get; set; } = string.Empty;
         public DateTime CreateDate { get; set; }
-
-        public ICollection<Product> Products { get; set; }
     }
     public class DeleteBrandInput
     {
