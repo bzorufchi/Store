@@ -17,7 +17,7 @@ namespace Store.API
             {
                 BrandName = B.BrandName,
                 CreateDate = B.CreateDate,
-                Products=B.Products,
+               
             }).ToList();
             return data;
         }
@@ -26,7 +26,7 @@ namespace Store.API
             context.Brands.Add(new Brands()
             {
                 BrandName = input.BrandName,
-                Products=input.Products,
+                
             });
             context.SaveChanges();
         }
@@ -35,7 +35,7 @@ namespace Store.API
 
             var Brands = context.Brands.Where(B => B.Id == input.Id).FirstOrDefault();
             Brands.BrandName = input.BrandName;
-            Brands.Products = input.Products;
+           Brands.CreateDate = input.CreateDate;
 
             context.SaveChanges();
             return " برند بروزرسانی شد";

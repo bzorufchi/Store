@@ -31,7 +31,7 @@ namespace Store.API
                 Text = c.Text,
                 IsAccepted = c.IsAccepted,
                 IsAcceptedDate = c.IsAcceptedDate,
-                CreateDate = c.CreateDate,
+                CreateDate = c.CreateDate,  
                 ByUserId = c.ByUserId
             }).ToList();
             return data;
@@ -53,6 +53,17 @@ namespace Store.API
         }
         public string UpdateComments(UpdateCommentsInput input)
         {
+
+            if (String.IsNullOrEmpty(Comments.Text))
+            {
+               return "0";
+            }
+            else
+            {
+                Comments.Text = input.Text;
+
+            }
+
 
             var Comments = context.Comments.Where(c => c.Id == input.Id).FirstOrDefault();
             Comments.Text = input.Text;
