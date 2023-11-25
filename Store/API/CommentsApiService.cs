@@ -53,25 +53,16 @@ namespace Store.API
         }
         public string UpdateComments(UpdateCommentsInput input)
         {
-
-            if (String.IsNullOrEmpty(Comments.Text))
+            var Comments = context.Comments.Where(c => c.Id == input.Id).FirstOrDefault();
+            if (!String.IsNullOrEmpty(input.Text))
             {
-               return "0";
+                Comments.Text=input.Text;
+                Comments.IsAccepted = 0;
             }
             else
             {
-                Comments.Text = input.Text;
-
+                Comments.Text = Comments.Text;
             }
-
-
-            var Comments = context.Comments.Where(c => c.Id == input.Id).FirstOrDefault();
-            Comments.Text = input.Text;
-            Comments.IsAccepted = input.IsAccepted;
-            Comments.IsAcceptedDate = input.IsAcceptedDate;
-            Comments.ByUserId = input.ByUserId;
-            Comments.UserId = input.UserId;
-            Comments.ProductId = input.ProductId;
 
             context.SaveChanges();
             return "کامنت کاربر بروزرسانی شد";
