@@ -68,12 +68,19 @@ namespace Store.API
             return "کامنت کاربر بروزرسانی شد";
         }
 
-        public string DeleteRole(DeleteComments input)
+        public string DeleteComments(DeleteComments input)
         {
-            var comments = context.Comments.Where(c => c.Id ==input.Id).FirstOrDefault();
-            context.Comments.Remove(comments);
-            context.SaveChanges();
-            return "کامنت کاربر حذف شد";
+            var comments = context.Comments.Where(c => c.Id == input.Id).FirstOrDefault();
+            if (!string.IsNullOrEmpty(input.Id==0))
+            {
+                Comments!.Id=input.Id;
+            }
+            else
+            {
+                context.Comments.Remove(comments);
+                context.SaveChanges();
+                return "کامنت کاربر حذف شد";
+            }
         }
     }
 }
