@@ -56,12 +56,12 @@ namespace Store.API
             var Comments = context.Comments.Where(c => c.Id == input.Id).FirstOrDefault();
             if (!String.IsNullOrEmpty(input.Text))
             {
-                Comments.Text=input.Text;
+                Comments!.Text=input.Text;
                 Comments.IsAccepted = 0;
             }
             else
             {
-                Comments.Text = Comments.Text;
+                Comments!.Text = Comments.Text;
             }
 
             context.SaveChanges();
