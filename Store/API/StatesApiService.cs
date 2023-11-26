@@ -43,10 +43,25 @@ namespace Store.API
 
         public string DeleteُState(DeleteStatesInput input)
         {
-            var States = context.States.Where(S => S.Id == input.Id).FirstOrDefault();
-            context.States.Remove(States);
-            context.SaveChanges();
-            return "وضعیت کاربر حذف شد";
+            if (input.Id == 0) {
+                throw new Exception("");
+            }
+            else
+            {
+                var State = context.States.Where(S => S.Id == input.Id).FirstOrDefault();
+                if (State == null)
+                {
+                    throw new Exception("");
+                }
+                else
+                {
+                    context.States.Remove(State);
+                    context.SaveChanges();
+                    return "وضعیت کاربر حذف شد";
+                }
+            }
+           
+           
         }
     }
 }

@@ -69,18 +69,38 @@ namespace Store.API
         }
 
         public string DeleteComments(DeleteComments input)
-        {
-            var comments = context.Comments.Where(c => c.Id == input.Id).FirstOrDefault();
-            if (!string.IsNullOrEmpty(input.Id==0))
+        {    //check kardan vorudi
+            if (input.Id == 0)
             {
-                Comments!.Id=input.Id;
+                throw new Exception("ورودی شما اشتباه است");
             }
             else
             {
-                context.Comments.Remove(comments);
-                context.SaveChanges();
-                return "کامنت کاربر حذف شد";
+                var comment = context.Comments.Where(c => c.Id == input.Id).FirstOrDefault();
+                if (comment == null)
+                {
+                    throw new Exception(" کامنتی با این مشخصات یافت نشد");
+                }
+                else {
+                    context.Comments.Remove(comment);
+                    context.SaveChanges();
+                    return "کامنت کاربر حذف شد";
+                }
+
             }
+           
+            //int flost dobule short long 
+            //string
+            // if(comment == null)
+            //if(comment is null)
+            // {
+
+            // }
+            //if(input.Id==0)
+            
+           
+               
+           
         }
     }
 }

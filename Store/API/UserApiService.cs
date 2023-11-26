@@ -60,10 +60,26 @@ namespace Store.API
 
         public string DeleteUser(DeleteUserInput input)
         {
-            var user = context.User.Where(u => u.Id==input.Id).FirstOrDefault();
-            context.User.Remove(user);
-            context.SaveChanges();
-            return "کاربر حذف شد";
+
+            if (input.Id == 0) {
+                throw new Exception("ورودی شما اشتباه است");
+            }
+            else
+            {
+                var user = context.User.Where(u => u.Id == input.Id).FirstOrDefault();
+                if (input.Id == null)
+                {
+                    throw new Exception("  کامنتی با این مشخصات یافت نشد");
+                }
+                else
+                {
+
+                    context.User.Remove(user);
+                    context.SaveChanges();
+                    return "کاربر حذف شد";
+                }
+            }
+           
         }
     }
 }
