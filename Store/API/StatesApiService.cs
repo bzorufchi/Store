@@ -44,14 +44,14 @@ namespace Store.API
         public string DeleteُState(DeleteStatesInput input)
         {
             if (input.Id == 0) {
-                throw new Exception("");
+                throw new Exception("ورودی شما اشتباه است");
             }
             else
             {
                 var State = context.States.Where(S => S.Id == input.Id).FirstOrDefault();
                 if (State == null)
                 {
-                    throw new Exception("");
+                    throw new Exception("  کامنتی با این مشخصات یافت نشد");
                 }
                 else
                 {

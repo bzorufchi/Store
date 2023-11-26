@@ -67,7 +67,7 @@ namespace Store.API
             else
             {
                 var user = context.User.Where(u => u.Id == input.Id).FirstOrDefault();
-                if (input.Id == null)
+                if (user==null)
                 {
                     throw new Exception("  کامنتی با این مشخصات یافت نشد");
                 }

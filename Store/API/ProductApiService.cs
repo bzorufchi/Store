@@ -61,19 +61,41 @@ namespace Store.API
                 Product.DiscountPrice = input.DiscountPrice;
                 Product.IsActive = input.IsActive;
                 Product.Count = input.Count;
-            Product.Like = input.Like;
+                Product.Like = input.Like;
                 Product.discountpercent = input.discountpercent;
          
             context.SaveChanges();
             return "محصول کاربر بروزرسانی شد";
         }
-
+        public string Delete(DeleteProduct input)
+        {
+            if (input.Id==0)
+            {
+                throw new Exception("");
+            }
+            else
+            {
+                var product = context.Product.Where(p => p.Id == input.Id).FirstOrDefault();
+                if (product == null)
+                {
+                    throw new Exception("");
+                }
+                else
+                {
+                    product.IsActive = 0;
+                    context.SaveChanges();
+                    return "محصول با موفقیت غیر فعال شد";
+                }
+            }
+        }
         public string DeleteProduct(DeleteProduct input)
         {
+
             var Product = context.Product.Where(p => p.Id ==input.Id).FirstOrDefault();
             context.Product.Remove(Product);
             context.SaveChanges();
             return "محصول کاربر حذف شد";
         }
     }
+    
 }
