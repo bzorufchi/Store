@@ -54,13 +54,13 @@ namespace Store.API
                 user!.FirstName = input.FirstName;
             }
           
-            if (!string.IsNullOrEmpty(input.FirstName))
+            if (!string.IsNullOrEmpty(input.NationalCode))
             {
-            user!.FirstName= input.FirstName;
+            user!.NationalCode = input.NationalCode;
             }
             else
             {
-                user!.FirstName=input.FirstName;
+                user!.NationalCode = input.NationalCode;
             }
             if (!string.IsNullOrEmpty(input.FamilyName))
             {
@@ -78,14 +78,21 @@ namespace Store.API
             {
                 user!.PhoneNumber=input.PhoneNumber;
             }
-            if (!string.IsNullOrEmpty(input.Gender)){
+            if (!string.IsNullOrEmpty(input.Password)){
 
-                user.Gender=input.Gender;
+                user.Password = input.Password;
             }
             else
             {
-                user!.Gender = input.Gender;
+                user!.Password = input.Password;
             }
+            if(!string.IsNullOrEmpty(input.UserName))
+            {
+                user!.UserName = input.UserName;
+            }
+            else
+            { user!.UserName = input.UserName;}
+            //gender and birthdate
 
             context.SaveChanges();
             return "ثبت شد";

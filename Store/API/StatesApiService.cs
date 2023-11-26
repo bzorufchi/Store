@@ -35,8 +35,14 @@ namespace Store.API
         public string UpdateStates(UpdateStatesInput input)
         {
             var States = context.States.Where(S => S.Id == input.Id).FirstOrDefault();
-            States.StateName = input.StateName;
-            States.CreateDate = input.CreateDate;
+            if(!string.IsNullOrEmpty(input.StateName))
+            {
+                States!.StateName = input.StateName;
+               
+            }
+            else { 
+                States!.StateName=input.StateName
+            }
             context.SaveChanges();
             return "وضعیت کاربر بروزرسانی شد";
         }
