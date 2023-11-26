@@ -44,15 +44,48 @@ namespace Store.API
         {
 
             var user = context.User.Where(u=> u.Id==input.Id).FirstOrDefault();
-            user.UserName = input.UserName;
-            user.PhoneNumber = input.PhoneNumber;
-            user.RoleId = input.RoleId;
-            user.BirthDate = input.BirthDate;
-            user.FirstName = input.FirstName;
-            user.FamilyName = input.FamilyName;
-            user.Gender = input.Gender;
-            user.NationalCode = input.NationalCode;
-            user.Password = input.Password;
+            if (!string.IsNullOrEmpty(input.FirstName))
+            {
+                user!.FirstName = input.FirstName;
+            
+            }
+            else
+            {
+                user!.FirstName = input.FirstName;
+            }
+          
+            if (!string.IsNullOrEmpty(input.FirstName))
+            {
+            user!.FirstName= input.FirstName;
+            }
+            else
+            {
+                user!.FirstName=input.FirstName;
+            }
+            if (!string.IsNullOrEmpty(input.FamilyName))
+            {
+                user!.FamilyName = input.FamilyName;
+            }
+            else
+            {
+                user!.FamilyName=input.FamilyName;
+            }
+            if (!string.IsNullOrEmpty(input.PhoneNumber))
+            {
+                user!.PhoneNumber = input.PhoneNumber;
+            }
+            else
+            {
+                user!.PhoneNumber=input.PhoneNumber;
+            }
+            if (!string.IsNullOrEmpty(input.Gender)){
+
+                user.Gender=input.Gender;
+            }
+            else
+            {
+                user!.Gender = input.Gender;
+            }
 
             context.SaveChanges();
             return "ثبت شد";
