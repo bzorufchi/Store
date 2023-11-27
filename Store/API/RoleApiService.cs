@@ -32,18 +32,42 @@ namespace Store.API
         {
 
             var Role = context.Role.Where(R => R.Id == input.Id).FirstOrDefault();
-            Role.RoleName = input.RoleName;
+            if (!string.IsNullOrEmpty(input.RoleName))
+            {
+                Role!.RoleName = input.RoleName;
+            }
+            else
+            {
+                Role!.RoleName = input.RoleName;
+            }
 
             context.SaveChanges();
             return "نقش کاربر بروزرسانی شد";
         }
 
-        public string DeleteRole(int id)
+        public string DeleteRole(DeleteRole input)//int id
         {
-            var Role = context.Role.Where(R => R.Id == id).FirstOrDefault();
-            context.Role.Remove(Role);
-            context.SaveChanges();
-            return "نقش کاربر حذف شد";
+
+            if (input.Id == 0)
+            {
+                throw new Exception("ورودی شما اشتباه است");
+            }
+            else
+            {
+                var Role = context.Role.Where(R => R.Id ==input.Id).FirstOrDefault();
+                if (Role == null)
+                {
+                    throw new Exception("نقشی با این مشخصات یافت نشد");
+                }
+                else
+                {
+                    context.Role.Remove(Role);
+                    context.SaveChanges();
+                    return "نقش کاربر حذف شد";
+                }
+            }
+           
+            
         }
     }
 }

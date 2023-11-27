@@ -40,8 +40,8 @@ namespace Store.API
                 States!.StateName = input.StateName;
                
             }
-            else { 
-                States!.StateName=input.StateName
+            else {
+                States!.StateName = input.StateName;
             }
             context.SaveChanges();
             return "وضعیت کاربر بروزرسانی شد";

@@ -92,7 +92,23 @@ namespace Store.API
             }
             else
             { user!.UserName = input.UserName;}
-            //gender and birthdate
+            //if (input.Gender = 0 || 1)
+            //{
+            //    user!.Gender = input.Gender;
+            //}
+            //else
+            //{
+            //    user!.Gender = 0;
+            //}
+            //if (input.BirthDate == null)
+            //{
+            //    user!.BirthDate = input.BirthDate;
+            //}
+            //else
+            //{
+            //    user!.BirthDate = input.BirthDate;
+            //}
+           
 
             context.SaveChanges();
             return "ثبت شد";

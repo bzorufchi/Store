@@ -1,4 +1,5 @@
-﻿using Store.Entitis;
+﻿using Microsoft.IdentityModel.Tokens;
+using Store.Entitis;
 using Store.Models;
 
 namespace Store.API
@@ -51,19 +52,83 @@ namespace Store.API
         {
 
             var Product = context.Product.Where(p => p.Id ==input.Id).FirstOrDefault();
-            Product.BrandId = input.BrandId;
+                
+                Product.BrandId = input.BrandId;
                 Product.CountryId = input.CountryId;
                 Product.CategoryId = input.CategoryId;
-                Product.ProductName = input.ProductName;
-                Product.ProductDescription = input.ProductDescription;
-                Product.ImageURL = input.ImageURL;
-                Product.OrginalPrice = input.OrginalPrice;
+            if (!string.IsNullOrEmpty(input.ProductName))
+            {
+                Product!.ProductName = input.ProductName;
+            }
+            else
+            {
+                Product!.ProductName = input.ProductName;
+            }
+            if (!string.IsNullOrEmpty(input.ProductDescription))
+            {
+                Product!.ProductDescription = input.ProductDescription;
+            }
+            else
+            {
+                Product!.ProductDescription = input.ProductDescription;
+            }
+            if (!string.IsNullOrEmpty(input.ImageURL))
+            {
+                Product!.ImageURL = input.ImageURL;
+            }
+            else
+            {
+                Product!.ImageURL = input.ImageURL;
+            }
+            if (input.OrginalPrice>0)
+            {
+                Product!.OrginalPrice = input.OrginalPrice;
+            }
+            else
+            {
+                Product!.OrginalPrice = input.OrginalPrice;
+            }
+            if(input.DiscountPrice > 0)
+            {
+                Product!.DiscountPrice = input.DiscountPrice;
+            }
+            else
+            {
                 Product.DiscountPrice = input.DiscountPrice;
-                Product.IsActive = input.IsActive;
-                Product.Count = input.Count;
-                Product.Like = input.Like;
-                Product.discountpercent = input.discountpercent;
-         
+            }
+            //if (input.IsActive == 0 || 1)
+            //{
+            //    Product!.IsActive = input.IsActive;
+            //}
+            //else
+            //{
+            //    Product!.IsActive = input.IsActive;
+            //}
+            if (input.Count > 0)
+            {
+                Product!.Count = input.Count;
+            }
+            else
+            {
+                Product!.Count = 0;
+            }
+            if(input.Like>0)
+            {
+                Product!.Like = input.Like;
+            }
+            else
+            {
+                Product!.Like = input.Like;
+            }
+            if (input.discountpercent > 0)
+            {
+                Product!.discountpercent=input.discountpercent;
+            }
+            else
+            {
+                Product!.discountpercent = input.discountpercent;
+            }
+          
             context.SaveChanges();
             return "محصول کاربر بروزرسانی شد";
         }
@@ -90,11 +155,26 @@ namespace Store.API
         }
         public string DeleteProduct(DeleteProduct input)
         {
-
-            var Product = context.Product.Where(p => p.Id ==input.Id).FirstOrDefault();
-            context.Product.Remove(Product);
-            context.SaveChanges();
-            return "محصول کاربر حذف شد";
+            if (input.Id == 0)
+            {
+                throw new Exception("ورودی شما اشتباه است");
+            }
+            else
+            {
+                var Product = context.Product.Where(p => p.Id == input.Id).FirstOrDefault();
+                if (input == null)
+                {
+                    throw new Exception("محصولی با این مشخصات یافت نشد");
+                }
+                else
+                {
+                    context.Product.Remove(Product);
+                    context.SaveChanges();
+                    return "محصول کاربر حذف شد";
+                }
+            }
+           
+            
         }
     }
     

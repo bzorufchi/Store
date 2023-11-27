@@ -1,4 +1,5 @@
-﻿using Store.Entitis;
+﻿using Microsoft.IdentityModel.Tokens;
+using Store.Entitis;
 using Store.Models;
 
 namespace Store.API
@@ -39,21 +40,63 @@ namespace Store.API
         {
 
             var ShoppingCart = context.ShoppingCart.Where(S => S.Id ==input.id).FirstOrDefault();
-            ShoppingCart.PeymentState = input.PeymentState;
-            ShoppingCart.PeymentMethod=input.PeymentMethod;
-            ShoppingCart.Count = input.Count;
-            ShoppingCart.FixedPrice=input.FixedPrice;
-
+            if (!string.IsNullOrEmpty(input.PeymentState))
+            {
+                ShoppingCart!.PeymentState = input.PeymentState;
+            }
+            else
+            {
+                ShoppingCart!.PeymentState=input.PeymentState;
+            }
+            if (!string.IsNullOrEmpty(input.PeymentMethod))
+            {
+                ShoppingCart!.PeymentMethod=input.PeymentMethod;
+            }
+            else
+            {
+                ShoppingCart!.PeymentMethod = input.PeymentMethod;
+            }
+            if (input.FixedPrice > 0)
+            {
+                ShoppingCart!.FixedPrice = input.FixedPrice;
+            }
+            else
+            {
+                ShoppingCart!.FixedPrice=0;
+            }
+            if (input.Count > 0)
+            {
+                ShoppingCart!.Count = input.Count;
+            }
+            else {
+                ShoppingCart!.Count=0;
+            }
             context.SaveChanges();
             return "سبد خرید کاربر بروزرسانی شد";
         }
 
         public string DeleteRole(DeleteShoppingCart input)
         {
-            var ShoppingCart = context.ShoppingCart.Where(S => S.Id ==input.id).FirstOrDefault();
-            context.ShoppingCart.Remove(ShoppingCart);
-            context.SaveChanges();
-            return "سبد خرید کاربر حذف شد";
+            if (input.id == 0)
+            {
+                throw new Exception("ورودی شما اشتباه است");
+            }
+            else
+            {
+                var ShoppingCart = context.ShoppingCart.Where(S => S.Id == input.id).FirstOrDefault();
+                if (input == null)
+                {
+                    throw new Exception("محصولی با این مشخصات یافت نشد");
+                }
+                else
+                {
+                    context.ShoppingCart.Remove(ShoppingCart);
+                    context.SaveChanges();
+                    return "سبد خرید کاربر حذف شد";
+                }
+            }
+           
+            
         }
     }
 }

@@ -33,7 +33,14 @@ namespace Store.API
         {
 
             var Country = context.Country.Where(c => c.Id == input.Id).FirstOrDefault();
-            Country.CountryName = input.CountryName;
+            if (!string.IsNullOrEmpty(input.CountryName))
+            {
+                Country!.CountryName = input.CountryName;
+            }
+            else
+            {
+                Country!.CountryName = input.CountryName;
+            }
 
             context.SaveChanges();
             return " کشور بروزرسانی شد";
@@ -41,10 +48,27 @@ namespace Store.API
 
         public string DeleteCountry(DeleteCountry input)
         {
-            var Country = context.Country.Where(c => c.Id ==input.Id).FirstOrDefault();
-            context.Country.Remove(Country);
-            context.SaveChanges();
-            return "کشور حذف شد";
+            if (input.Id == 0)
+            {
+                throw new Exception("ورودی شما اشتباه است");
+            }
+            else
+            {
+                var Country = context.Country.Where(c => c.Id == input.Id).FirstOrDefault();
+                if (Country == null)
+                {
+                    throw new Exception("کشوری یافت نشد");
+
+                }
+                else
+                {
+                    context.Country.Remove(Country);
+                    context.SaveChanges();
+                    return "کشور حذف شد";
+                }
+            }
+           
+         
         }
     }
 }

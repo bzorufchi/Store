@@ -34,19 +34,50 @@ namespace Store.API
         {
 
             var Brands = context.Brands.Where(B => B.Id == input.Id).FirstOrDefault();
-            Brands.BrandName = input.BrandName;
-           Brands.CreateDate = input.CreateDate;
+            if (!string.IsNullOrEmpty(input.BrandName))
+            {
+                Brands!.BrandName = input.BrandName;
+            }
+            else
+            {
+                Brands!.BrandName = input.BrandName;
+            }
+            //if (input.CreateDate != null)
+            //{
+            //    Brands!.CreateDate = input.CreateDate;
+            //}
+            //else
+            //{
+            //    Brands.CreateDate = DateTime.Now;
+            //}
 
             context.SaveChanges();
             return " برند بروزرسانی شد";
         }
 
         public string DeleteRole(DeleteBrandInput input)
+
         {
-            var Brands = context.Brands.Where(B => B.Id ==input.Id).FirstOrDefault();
-            context.Brands.Remove(Brands);
-            context.SaveChanges();
-            return " برند حذف شد";
+            if(input.Id == 0)
+            {
+                throw new Exception("ورودی شما اشتباه است");
+            }
+            else
+            {
+                var Brands = context.Brands.Where(B => B.Id == input.Id).FirstOrDefault();
+                if (Brands == null)
+                {
+                    throw new Exception("برند با این مشخصات یافت نشد");
+                }
+                else
+                {
+                    context.Brands.Remove(Brands);
+                    context.SaveChanges();
+                    return " برند حذف شد";
+                }
+            }
+           
+           
         }
     }
 }
