@@ -1,89 +1,77 @@
 ﻿@{
     ViewData["Title"] = "SignUp";
+	<link rel="stylesheet" href="~/css/SignUp.css" asp-append-version="true" />
 }
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script src="~/js/SignUp.js" asp-append-version="true"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<div class="body">
+	<div class="veen">
+		<div class="login-btn splits">
+			<p>Already an user?</p>
+			<button class="active">Login</button>
+		</div>
+		<div class="rgstr-btn splits">
+			<p>Don't have an account?</p>
+			<button>Register</button>
+		</div>
+		<div class="wrapper">
+			<form id="login" tabindex="500">
+				<h3>Login</h3>
+				<div class="mail">
+					<input type="mail" name="">
+					<label>Mail or Username</label>
+				</div>
+				<div class="passwd">
+					<input type="password" name="">
+					<label>Password</label>
+				</div>
+				<div class="submit">
+					<button class="dark">Login</button>
+				</div>
+			</form>
+			<form id="register" tabindex="502">
+				<h3>Register</h3>
+				<div class="name">
+					<input type="text" name="">
+					<label>Full Name</label>
+				</div>
+				<div class="mail">
+					<input type="mail" name="">
+					<label>Mail</label>
+				</div>
+				<div class="uid">
+					<input type="text" name="">
+					<label>User Name</label>
+				</div>
+				<div class="passwd">
+					<input type="password" name="">
+					<label>Password</label>
+				</div>
+				<div class="submit">
+					<button class="dark">Register</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 
-<section class="vh-100" style="background-color: #2779e2;">
-    <div class="container h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-xl-9">
 
-                <h1 class="text-white mb-4">Apply for a job</h1>
+<style type="text/css">
+	.site-link {
+		padding: 5px 15px;
+		position: fixed;
+		z-index: 99999;
+		background: #fff;
+		box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+		right: 30px;
+		bottom: 30px;
+		border-radius: 10px;
+	}
 
-                <div class="card" style="border-radius: 15px;">
-                    <div class="card-body">
-
-                        <div class="row align-items-center pt-4 pb-3">
-                            <div class="col-md-3 ps-5">
-
-                                <h6 class="mb-0">Full name</h6>
-
-                            </div>
-                            <div class="col-md-9 pe-5">
-
-                                <input type="text" class="form-control form-control-lg" />
-
-                            </div>
-                        </div>
-
-                        <hr class="mx-n3">
-
-                        <div class="row align-items-center py-3">
-                            <div class="col-md-3 ps-5">
-
-                                <h6 class="mb-0">Email address</h6>
-
-                            </div>
-                            <div class="col-md-9 pe-5">
-
-                                <input type="email" class="form-control form-control-lg" placeholder="example@example.com" />
-
-                            </div>
-                        </div>
-
-                        <hr class="mx-n3">
-
-                        <div class="row align-items-center py-3">
-                            <div class="col-md-3 ps-5">
-
-                                <h6 class="mb-0">Full name</h6>
-
-                            </div>
-                            <div class="col-md-9 pe-5">
-
-                                <textarea class="form-control" rows="3" placeholder="Message sent to the employer"></textarea>
-
-                            </div>
-                        </div>
-
-                        <hr class="mx-n3">
-
-                        <div class="row align-items-center py-3">
-                            <div class="col-md-3 ps-5">
-
-                                <h6 class="mb-0">Upload CV</h6>
-
-                            </div>
-                            <div class="col-md-9 pe-5">
-
-                                <input class="form-control form-control-lg" id="formFileLg" type="file" />
-                                <div class="small text-muted mt-2">
-                                    Upload your CV/Resume or any other relevant file. Max file
-                                    size 50 MB
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <hr class="mx-n3">
-
-                        <div class="px-5 py-4">
-                            <button type="submit" class="btn btn-primary btn-lg">Send application</button>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
+		.site-link img {
+			width: 30px;
+			height: 30px;
+		}
+</style>
