@@ -12,10 +12,12 @@ namespace Store.API
         {
             this.context = context;
         }
-        public List<GetAllProductOutput> GetAllRole()
+        public List<GetAllProductOutput> GetAllProduct()
         {
             var data = context.Product.Select(p => new GetAllProductOutput()
             {
+                //to do bahare
+                //Add Id
                 BrandId = p.BrandId,
                 CountryId = p.CountryId,
                 CategoryId= p.CategoryId,
@@ -32,6 +34,8 @@ namespace Store.API
             }).ToList();
             return data;
         }
+        //to do bahare
+        // return bool
         public void AddProduct(AddProductInput input)
         {
             context.Product.Add(new Product()
@@ -48,6 +52,8 @@ namespace Store.API
             });
             context.SaveChanges();
         }
+        //to do bahare
+        // return bool
         public string UpdateProduct(UpdateProductInput input)
         {
 
@@ -96,6 +102,8 @@ namespace Store.API
             {
                 Product.DiscountPrice = input.DiscountPrice;
             }
+            //to do bahare
+           
             //if (input.IsActive == 0 || 1)
             //{
             //    Product!.IsActive = input.IsActive;
@@ -176,6 +184,13 @@ namespace Store.API
            
             
         }
+        // to do bahare
+
+        //public bool AddProductLike()
+        //{
+        //    return true;
+        //    return false;
+        //}
     }
     
 }

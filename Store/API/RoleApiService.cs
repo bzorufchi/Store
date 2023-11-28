@@ -15,6 +15,8 @@ namespace Store.API
         {
             var data = context.Role.Select(R => new GetAllRoleOutput()
             {
+                // to do bahare
+                // Id اضافه شود
                 RoleName = R.RoleName,
                 CreateDate = R.CreateDate,
             }).ToList();
@@ -38,7 +40,7 @@ namespace Store.API
             }
             else
             {
-                Role!.RoleName = input.RoleName;
+                Role!.RoleName = Role.RoleName;
             }
 
             context.SaveChanges();

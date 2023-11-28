@@ -5,8 +5,11 @@ namespace Store.Models
 {
     public class GetAllUsersOutput
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Family { get; set; }
+        public string NationalCode { get; set; }
+        public string PhoneNumber { get; set; }
         public DateTime Birthday { get; set; }
 
     }
@@ -14,7 +17,7 @@ namespace Store.Models
     {
         public int RoleId { get; set; }
         [Required(ErrorMessage ="پر کردن این فیلد الزامی می باشد")]
-        [EmailAddress]
+        //[EmailAddress]
         public string FirstName { get; set; }
         public string FamilyName { get; set; }
         public DateTime BirthDate { get; set; }
@@ -23,7 +26,7 @@ namespace Store.Models
         public string UserName { get; set; }
         public string Password { get; set; }
         public DateTime CreateDate { get; set; }
-        [Mobile]
+        [Mobile(ErrorMessage = "شماره موبایل صحیح نیست")]
         public string PhoneNumber { get; set; }
         public int Gender { get; set; }
     }
@@ -43,9 +46,11 @@ namespace Store.Models
         public string PhoneNumber { get; set; }
         public int Gender { get; set; }
     }
-    public class DeleteUserInput
+    public class SelectUserInput
     {
         public int Id { get; set; }
-       
+        public string NationalCode { get; set; }
+        public string PhoneNumber { get; set; }
+
     }
 }

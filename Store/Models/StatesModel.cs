@@ -4,6 +4,7 @@ namespace Store.Models
 {
     public class GetAllStatesOutput
     {
+        public int Id { get; set; }
         public string StateName { get; set; }
         public DateTime CreateDate { get; set; }
     }
@@ -15,8 +16,6 @@ namespace Store.Models
     {
         public int Id { get; set; }
         public string StateName { get; set; }
-        public DateTime CreateDate { get; set; }
-
     }
     public class DeleteStatesInput
     {

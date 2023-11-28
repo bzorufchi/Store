@@ -12,10 +12,11 @@ namespace Store.API
         {
             this.context = context;
         }
-        public List<GetAllShoppingCartOutput> GetAllRole()
+        public List<GetAllShoppingCartOutput> GetAllCart()
         {
             var data = context.ShoppingCart.Select(S => new GetAllShoppingCartOutput()
-            {
+            {   
+                Id = S.Id,
                 CreateDate = S.CreateDate,
                 PeymentState = S.PeymentState,
                 PeymentMethod=S.PeymentMethod,
@@ -28,8 +29,10 @@ namespace Store.API
         {
             context.ShoppingCart.Add(new ShoppingCart()
             {
+                //to do bahare
+                // ورودی state درست شود
                 CreateDate = DateTime.Now,
-                PeymentState = input.PeymentState,
+                PeymentState ="1",
                 PeymentMethod = input.PeymentMethod,
                 Count = input.Count,
                 FixedPrice = input.FixedPrice,
@@ -38,6 +41,8 @@ namespace Store.API
         }
         public string UpdateShoppingCart(UpdateShoppingCartInput input)
         {
+            //to do hame
+            //بعدا تحلیل شود
 
             var ShoppingCart = context.ShoppingCart.Where(S => S.Id ==input.id).FirstOrDefault();
             if (!string.IsNullOrEmpty(input.PeymentState))
@@ -75,7 +80,7 @@ namespace Store.API
             return "سبد خرید کاربر بروزرسانی شد";
         }
 
-        public string DeleteRole(DeleteShoppingCart input)
+        public string DeleteCart(DeleteShoppingCart input)
         {
             if (input.id == 0)
             {

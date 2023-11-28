@@ -23,6 +23,9 @@ namespace Store.API
         }
         public void AddStates(AddStatesInput input)
         {
+            // برای گرفتن زمان حال حاضر
+            input.CreateDate = DateTime.Now;
+
             context.States.Add(new States()
             {
 
@@ -32,19 +35,19 @@ namespace Store.API
             });
             context.SaveChanges();
         }
-        public string UpdateStates(UpdateStatesInput input)
+        public bool UpdateStates(UpdateStatesInput input)
         {
             var States = context.States.Where(S => S.Id == input.Id).FirstOrDefault();
             if(!string.IsNullOrEmpty(input.StateName))
             {
-                States!.StateName = input.StateName;
+                States.StateName = input.StateName;
                
             }
             else {
-                States!.StateName = input.StateName;
+                States.StateName = States.StateName;
             }
             context.SaveChanges();
-            return "وضعیت کاربر بروزرسانی شد";
+            return true;
         }
 
         public string DeleteُState(DeleteStatesInput input)

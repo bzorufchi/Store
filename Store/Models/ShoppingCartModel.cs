@@ -2,6 +2,7 @@
 {
     public class GetAllShoppingCartOutput
     {
+        public int Id { get; set; }
         public DateTime CreateDate { get; set; }
         public string PeymentState { get; set; }
         public string PeymentMethod { get; set; }
