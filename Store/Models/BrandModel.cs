@@ -9,7 +9,7 @@ namespace Store.Models
         public DateTime CreateDate { get; set; }
 		public int IsActive { get; set; }
 	}
-    public class AddBrandsInput
+    public class AddBrandsInput 
     {
         public int Id { get; set; }
         public string BrandName { get; set; } = string.Empty;
