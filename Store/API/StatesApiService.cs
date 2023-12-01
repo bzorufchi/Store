@@ -15,42 +15,80 @@ namespace Store.API
         {
             var data = context.States.Select(S => new GetAllStatesOutput()
             {
+                Id = S.Id,
                 StateName = S.StateName,
                 CreateDate = S.CreateDate,
-             
-            }).ToList();
+				IsActive = S.IsActive
+
+			}).ToList();
             return data;
         }
-        public void AddStates(AddStatesInput input)
+        public bool AddStates(AddStatesInput input)
         {
             // برای گرفتن زمان حال حاضر
-            input.CreateDate = DateTime.Now;
-
-            context.States.Add(new States()
+            try
             {
+				input.CreateDate = DateTime.Now;
 
-                StateName = input.StateName,
-                CreateDate = input.CreateDate,
-              
-            });
-            context.SaveChanges();
+				context.States.Add(new States()
+				{
+
+					StateName = input.StateName,
+					CreateDate = input.CreateDate,
+					IsActive = input.IsActive
+				});
+				context.SaveChanges();
+                return true;
+			}
+            catch (Exception)
+            {
+                return false;
+            }
         }
         public bool UpdateStates(UpdateStatesInput input)
         {
-            var States = context.States.Where(S => S.Id == input.Id).FirstOrDefault();
-            if(!string.IsNullOrEmpty(input.StateName))
+            try
             {
-                States.StateName = input.StateName;
-               
-            }
-            else {
-                States.StateName = States.StateName;
-            }
-            context.SaveChanges();
-            return true;
-        }
+				var States = context.States.Where(S => S.Id == input.Id).FirstOrDefault();
+				if (!string.IsNullOrEmpty(input.StateName))
+				{
+					States.StateName = input.StateName;
 
-        public string DeleteُState(DeleteStatesInput input)
+				}
+				else
+				{
+					States.StateName = States.StateName;
+				}
+				context.SaveChanges();
+				return true;
+			}
+            catch (Exception)
+            {
+                return false;   
+            }
+			}
+		public string Delete(DeleteStatesInput input)
+		{
+			if (input.Id == 0)
+			{
+				throw new Exception("");
+			}
+			else
+			{
+				var State = context.States.Where(S => S.Id == input.Id).FirstOrDefault();
+				if (State == null)
+				{
+					throw new Exception("");
+				}
+				else
+				{
+					State.IsActive = 0;
+					context.SaveChanges();
+					return "محصول با موفقیت غیر فعال شد";
+				}
+			}
+		}
+		public string DeleteُState(DeleteStatesInput input)
         {
             if (input.Id == 0) {
                 throw new Exception("ورودی شما اشتباه است");

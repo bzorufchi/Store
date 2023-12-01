@@ -9,8 +9,8 @@
         public string PeymentMethod { get; set; }
         public int Count { get; set; }
         public int FixedPrice { get; set; }
-
-        public User User { get; set; }
+		public int IsActive { get; set; }
+		public User User { get; set; }
         public ICollection<Orders> Orders { get; set; }
     }
 }

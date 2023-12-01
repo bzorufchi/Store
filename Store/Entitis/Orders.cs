@@ -11,8 +11,8 @@
         public int FixedPrice { get; set; }
         public int otal_price_of_discounts { get; set; }
         public int Original_price_payable { get; set; }
-        
-        public ShoppingCart ShoppingCart { get; set; }
+		public int IsActive { get; set; }
+		public ShoppingCart ShoppingCart { get; set; }
 
         public ICollection<States> states { get; set; }
          public ICollection<Product> products { get; set; }

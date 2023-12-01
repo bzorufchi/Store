@@ -22,6 +22,7 @@ namespace Store.API
                 PeymentMethod=S.PeymentMethod,
                 Count=S.Count,
                 FixedPrice=S.FixedPrice,
+                IsActive=S.IsActive
             }).ToList();
             return data;
         }
@@ -36,7 +37,8 @@ namespace Store.API
                 PeymentMethod = input.PeymentMethod,
                 Count = input.Count,
                 FixedPrice = input.FixedPrice,
-            });
+				IsActive = input.IsActive
+			});
             context.SaveChanges();
         }
         public string UpdateShoppingCart(UpdateShoppingCartInput input)
@@ -79,8 +81,28 @@ namespace Store.API
             context.SaveChanges();
             return "سبد خرید کاربر بروزرسانی شد";
         }
-
-        public string DeleteCart(DeleteShoppingCart input)
+		public string Delete(DeleteShoppingCart input)
+		{
+			if (input.id == 0)
+			{
+				throw new Exception("");
+			}
+			else
+			{
+				var ShoppingCart = context.ShoppingCart.Where(S => S.Id == input.id).FirstOrDefault();
+				if (ShoppingCart == null)
+				{
+					throw new Exception("");
+				}
+				else
+				{
+					ShoppingCart.IsActive = 0;
+					context.SaveChanges();
+					return "محصول با موفقیت غیر فعال شد";
+				}
+			}
+		}
+		public string DeleteCart(DeleteShoppingCart input)
         {
             if (input.id == 0)
             {

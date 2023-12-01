@@ -10,8 +10,8 @@
         public DateTime IsAcceptedDate { get; set; }
         public DateTime CreateDate { get; set; }
         public int ByUserId { get; set; }
-
-        public User User { get; set; }
+		public int IsActive { get; set; }
+		public User User { get; set; }
         public Product Product { get; set; }
 
     }

@@ -14,48 +14,83 @@ namespace Store.API
         public List<GetAllBrandsOutput> GetAllBrand()
         {
             var data = context.Brands.Select(B => new GetAllBrandsOutput()
-            {
+            { 
+                Id = B.Id,
+                IsActive=B.IsActive,
                 BrandName = B.BrandName,
                 CreateDate = B.CreateDate,
                
             }).ToList();
             return data;
         }
-        public void AddBrands(AddBrandsInput input)
+        public bool AddBrands(AddBrandsInput input)
         {
-            context.Brands.Add(new Brands()
+            try
             {
-                BrandName = input.BrandName,
-                
-            });
-            context.SaveChanges();
+				context.Brands.Add(new Brands()
+				{
+					BrandName = input.BrandName,
+
+				});
+				context.SaveChanges();
+                return true;
+			}
+            catch (Exception)
+            {
+                return false;
+            }
         }
-        public string UpdateBrands(UpdateBrandInput input)
+        public bool UpdateBrands(UpdateBrandInput input)
         {
 
-            var Brands = context.Brands.Where(B => B.Id == input.Id).FirstOrDefault();
-            if (!string.IsNullOrEmpty(input.BrandName))
+            try
             {
-                Brands!.BrandName = input.BrandName;
-            }
-            else
-            {
-                Brands!.BrandName = input.BrandName;
-            }
-            //if (input.CreateDate != null)
-            //{
-            //    Brands!.CreateDate = input.CreateDate;
-            //}
-            //else
-            //{
-            //    Brands.CreateDate = DateTime.Now;
-            //}
+				var Brands = context.Brands.Where(B => B.Id == input.Id).FirstOrDefault();
+				if (!string.IsNullOrEmpty(input.BrandName))
+				{
+					Brands.BrandName = input.BrandName;
+				}
+				else
+				{
+					Brands.BrandName = Brands.BrandName;
+				}
+				//if (input.CreateDate != null)
+				//{
+				//    Brands!.CreateDate = input.CreateDate;
+				//}
+				//else
+				//{
+				//    Brands.CreateDate = DateTime.Now;
+				//}
 
-            context.SaveChanges();
-            return " برند بروزرسانی شد";
+				context.SaveChanges();
+                return true;
+			}
+            catch { return false; }
         }
 
-        public string DeleteRole(DeleteBrandInput input)
+		public string Delete(DeleteBrandInput input)
+		{
+			if (input.Id == 0)
+			{
+				throw new Exception("");
+			}
+			else
+			{
+				var Brands = context.Brands.Where(b => b.Id == input.Id).FirstOrDefault();
+				if (Brands == null)
+				{
+					throw new Exception("");
+				}
+				else
+				{
+					Brands.IsActive = 0;
+					context.SaveChanges();
+					return "محصول با موفقیت غیر فعال شد";
+				}
+			}
+		}
+		public string DeleteRole(DeleteBrandInput input)
 
         {
             if(input.Id == 0)

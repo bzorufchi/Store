@@ -22,8 +22,9 @@ namespace Store.API
                 Family = u.FamilyName,
                 NationalCode=u.NationalCode,
                 PhoneNumber=u.PhoneNumber,
-                Birthday = u.BirthDate
-            }).ToList();
+                Birthday = u.BirthDate,
+				IsActive = u.IsActive
+			}).ToList();
             return data;
         }
 
@@ -37,8 +38,9 @@ namespace Store.API
                 Family = u.FamilyName,
                   NationalCode=u.NationalCode,
                 PhoneNumber=u.PhoneNumber,
-                Birthday = u.BirthDate
-            }
+                Birthday = u.BirthDate,
+				IsActive = u.IsActive
+			}
             ).FirstOrDefault();
           
             return user;
@@ -58,8 +60,10 @@ namespace Store.API
                     Password = input.Password,
                     PhoneNumber = input.PhoneNumber,
                     RoleId = input.RoleId,
-                    UserName = input.UserName
-                });
+                    UserName = input.UserName,
+
+					IsActive = input.IsActive
+				});
                 context.SaveChanges();
                 return true;
 
@@ -151,8 +155,28 @@ namespace Store.API
                 return false;
             }
         }
-
-        public bool DeleteUser(SelectUserInput input)
+		public string Delete(SelectUserInput input)
+		{
+			if (input.Id == 0)
+			{
+				throw new Exception("");
+			}
+			else
+			{
+				var user = context.User.Where(u => u.Id == input.Id).FirstOrDefault();
+				if (user == null)
+				{
+					throw new Exception("");
+				}
+				else
+				{
+					user.IsActive = 0;
+					context.SaveChanges();
+					return "محصول با موفقیت غیر فعال شد";
+				}
+			}
+		}
+		public bool DeleteUser(SelectUserInput input)
         {
             if (input.Id == 0) {
                 return false;

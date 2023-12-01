@@ -11,6 +11,7 @@ namespace Store.Models
         public string NationalCode { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime Birthday { get; set; }
+        public int IsActive { get; set; }
 
     }
     public class AddUserInput
@@ -29,7 +30,8 @@ namespace Store.Models
         [Mobile(ErrorMessage = "شماره موبایل صحیح نیست")]
         public string PhoneNumber { get; set; }
         public int Gender { get; set; }
-    }
+		public int IsActive { get; set; }
+	}
     public class UpdateUserInput
     {
         public int Id { get; set; }
@@ -45,12 +47,14 @@ namespace Store.Models
         [Mobile(ErrorMessage = "شماره موبایل صحیح نیست")]
         public string PhoneNumber { get; set; }
         public int Gender { get; set; }
-    }
+		public int IsActive { get; set; }
+	}
     public class SelectUserInput
     {
         public int Id { get; set; }
         public string NationalCode { get; set; }
         public string PhoneNumber { get; set; }
+		
 
-    }
+	}
 }

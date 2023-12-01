@@ -14,60 +14,96 @@ namespace Store.API
         public List<GetAllCategoryOutput> GetAllCategories()
         {
             var data = context.Category.Select(c => new GetAllCategoryOutput { 
+            Id = c.Id,
+            IsActive = c.IsActive,
              CategoryDescription = c.Description,
              CategoryName =c.CategoryName
             }).ToList();
             return data;
         }
-        public void AddCategory(AddCategoryInput input)
+        public bool AddCategory(AddCategoryInput input)
         {
-            context.Category.Add(new Category {
-              CategoryName = input.CategoryName,
-              CategoryParent =input.CategoryParrent,
-              Description = input.CategoryDescription
-            });
-            context.SaveChanges();
+            try
+            {
+				context.Category.Add(new Category
+				{
+					CategoryName = input.CategoryName,
+					CategoryParent = input.CategoryParrent,
+					Description = input.CategoryDescription
+				});
+				context.SaveChanges();
+                return true;
+			}
+            catch (Exception)
+            {
+                return false;
+            }
         }
-        public string UpdateCategory(UpdateCategoryInput input)
+        public bool UpdateCategory(UpdateCategoryInput input)
         {
+            try
+            {
+				var category = context.Category.Where(c => c.Id == input.Id).FirstOrDefault();
+				//if (input.CreateDate!=null)
+				//{
+				//    category!.CreateDate = input.CreateDate;
+				//}
+				//else
+				//{
+				//    category.CreateDate = DateTime.Now;
+				//}
 
-            var category= context.Category.Where(c => c.Id == input.Id).FirstOrDefault();
-            //if (input.CreateDate!=null)
-            //{
-            //    category!.CreateDate = input.CreateDate;
-            //}
-            //else
-            //{
-            //    category.CreateDate = DateTime.Now;
-            //}
-
-            if (!string.IsNullOrEmpty(input.CategoryName))
-            {
-                category!.CategoryName = input.CategoryName;
-            }
-            else
-            {
-                category!.CategoryName = input.CategoryName;
-            }
-            if (!string.IsNullOrEmpty(input.CategoryDescription)){
-                category!.Description = input.CategoryDescription;
-            }
-            else
-            {
-                category!.Description = input.CategoryDescription;
-            }
-            if (input.CategoryParrent >=0)
-            {
-                category!.CategoryParent = input.CategoryParrent;
-            }
-            else
-            {
-                category!.CategoryParent = input.CategoryParrent;
-            }
-            context.SaveChanges();
-            return "دسته بندی بروزرسانی شد";
+				if (!string.IsNullOrEmpty(input.CategoryName))
+				{
+					category.CategoryName = input.CategoryName;
+				}
+				else
+				{
+					category.CategoryName = category.CategoryName;
+				}
+				if (!string.IsNullOrEmpty(input.CategoryDescription))
+				{
+					category.Description = input.CategoryDescription;
+				}
+				else
+				{
+					category.Description = category.Description;
+				}
+				if (input.CategoryParrent >= 0)
+				{
+					category.CategoryParent = input.CategoryParrent;
+				}
+				else
+				{
+					category.CategoryParent = category.CategoryParent;
+				}
+				context.SaveChanges();
+                return true;
+			}
+           catch { return false; }
         }
-        public string DeleteCategory(DeleteCategoryInput input)
+		public string Delete(DeleteCategoryInput input)
+		{
+			if (input.Id == 0)
+			{
+				throw new Exception("");
+			}
+			else
+			{
+				var category = context.Category.Where(c => c.Id == input.Id).FirstOrDefault();
+				if (category == null)
+				{
+					throw new Exception("");
+				}
+				else
+				{
+					category.IsActive = 0;
+					context.SaveChanges();
+					return "محصول با موفقیت غیر فعال شد";
+				}
+			}
+		}
+		public string DeleteCategory(DeleteCategoryInput input)
         {
             if (input.Id == 0)
             {

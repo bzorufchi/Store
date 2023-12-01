@@ -2,6 +2,7 @@
 {
     public class GetAllProductOutput
     {
+        public int Id { get; set; }
         public int BrandId { get; set; }
         public int CountryId { get; set; }
         public int CategoryId { get; set; }

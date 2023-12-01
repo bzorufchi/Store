@@ -13,8 +13,8 @@
         public DateTime CreateDate { get; set; }
         public string PhoneNumber { get; set; }
         public int Gender { get; set; }
-
-        public Role Role { get; set; }
+		public int IsActive { get; set; }
+		public Role Role { get; set; }
         public ICollection<Comments> Comments { get; set;}
         public ICollection<ShoppingCart> shoppingCarts { get; set; }
     }

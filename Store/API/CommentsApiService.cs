@@ -15,6 +15,8 @@ namespace Store.API
         {
             var data = context.Comments.Select(c => new GetAllCommentsOutput()
             {
+                Id = c.Id,
+                IsActive = c.IsActive,
                 Text = c.Text,
                 IsAccepted = c.IsAccepted,
                 IsAcceptedDate=c.IsAcceptedDate,
@@ -28,47 +30,83 @@ namespace Store.API
         {
             var data = context.Comments.Where(c => c.ProductId == ProductId).Select(c => new GetAllCommentsOutput()
             {
+                Id = c.Id,
                 Text = c.Text,
                 IsAccepted = c.IsAccepted,
                 IsAcceptedDate = c.IsAcceptedDate,
                 CreateDate = c.CreateDate,  
-                ByUserId = c.ByUserId
-            }).ToList();
+                ByUserId = c.ByUserId,
+
+				 IsActive = c.IsActive,
+			}).ToList();
             return data;
         }
-            public void Addcomments(AddCommentsInput input)
+            public bool Addcomments(AddCommentsInput input)
         {
-            context.Comments.Add(new Comments()
+            try
             {
+				context.Comments.Add(new Comments()
+				{
 
-                Text = input.Text,
-                IsAccepted = input.IsAccepted,
-                IsAcceptedDate=input.IsAcceptedDate,
-                ByUserId = input.ByUserId,
-                UserId=input.UserId,
-                ProductId=input.ProductId,
+					Text = input.Text,
+					IsAccepted = input.IsAccepted,
+					IsAcceptedDate = input.IsAcceptedDate,
+					ByUserId = input.ByUserId,
+					UserId = input.UserId,
+					ProductId = input.ProductId,
 
-            });
-            context.SaveChanges();
+				});
+				context.SaveChanges();
+                return true;
+			}
+            catch (Exception)
+            {
+                return false;
+            }
         }
-        public string UpdateComments(UpdateCommentsInput input)
+        public bool UpdateComments(UpdateCommentsInput input)
         {
-            var Comments = context.Comments.Where(c => c.Id == input.Id).FirstOrDefault();
-            if (!String.IsNullOrEmpty(input.Text))
+            try
             {
-                Comments!.Text=input.Text;
-                Comments.IsAccepted = 0;
-            }
-            else
-            {
-                Comments!.Text = Comments.Text;
-            }
+				var Comments = context.Comments.Where(c => c.Id == input.Id).FirstOrDefault();
+				if (!String.IsNullOrEmpty(input.Text))
+				{
+					Comments.Text = input.Text;
+					Comments.IsAccepted = 0;
+				}
+				else
+				{
+					Comments.Text = Comments.Text;
+				}
 
-            context.SaveChanges();
-            return "کامنت کاربر بروزرسانی شد";
+				context.SaveChanges();
+                return true;
+			}
+            catch { return false; }
         }
 
-        public string DeleteComments(DeleteComments input)
+		public string Delete(DeleteComments input)
+		{
+			if (input.Id == 0)
+			{
+				throw new Exception("");
+			}
+			else
+			{
+				var comment = context.Comments.Where(c => c.Id == input.Id).FirstOrDefault();
+				if (comment == null)
+				{
+					throw new Exception("");
+				}
+				else
+				{
+					comment.IsActive = 0;
+					context.SaveChanges();
+					return "محصول با موفقیت غیر فعال شد";
+				}
+			}
+		}
+		public string DeleteComments(DeleteComments input)
         {    //check kardan vorudi
             if (input.Id == 0)
             {

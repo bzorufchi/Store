@@ -18,6 +18,7 @@ namespace Store.API
             {
                 //to do bahare
                 //Add Id
+                Id = p.Id,
                 BrandId = p.BrandId,
                 CountryId = p.CountryId,
                 CategoryId= p.CategoryId,
@@ -31,114 +32,128 @@ namespace Store.API
                 Like = p.Like,
                 discountpercent = p.discountpercent,
                 CreationDate = p.CreationDate
+
             }).ToList();
             return data;
         }
         //to do bahare
         // return bool
-        public void AddProduct(AddProductInput input)
+        public bool AddProduct(AddProductInput input)
         {
-            context.Product.Add(new Product()
+            try
             {
-                ProductName = input.ProductName,
-                ProductDescription = input.ProductDescription,
-                ImageURL = input.ImageURL,
-                OrginalPrice = input.OrginalPrice,
-                DiscountPrice = input.DiscountPrice,
-                IsActive = input.IsActive,
-                Count = input.Count,
-                Like = input.Like,
-                discountpercent = input.discountpercent,
-            });
-            context.SaveChanges();
+				context.Product.Add(new Product()
+				{
+					ProductName = input.ProductName,
+					ProductDescription = input.ProductDescription,
+					ImageURL = input.ImageURL,
+					OrginalPrice = input.OrginalPrice,
+					DiscountPrice = input.DiscountPrice,
+					IsActive = input.IsActive,
+					Count = input.Count,
+					Like = input.Like,
+					discountpercent = input.discountpercent,
+				});
+				context.SaveChanges();
+                return true;
+			}
+            catch (Exception) {
+            return false;
+            }
         }
         //to do bahare
         // return bool
-        public string UpdateProduct(UpdateProductInput input)
+        public bool UpdateProduct(UpdateProductInput input)
         {
 
-            var Product = context.Product.Where(p => p.Id ==input.Id).FirstOrDefault();
-                
-                Product.BrandId = input.BrandId;
-                Product.CountryId = input.CountryId;
-                Product.CategoryId = input.CategoryId;
-            if (!string.IsNullOrEmpty(input.ProductName))
+            try
             {
-                Product!.ProductName = input.ProductName;
+				var Product = context.Product.Where(p => p.Id == input.Id).FirstOrDefault();
+
+				Product.BrandId = input.BrandId;
+				Product.CountryId = input.CountryId;
+				Product.CategoryId = input.CategoryId;
+				if (!string.IsNullOrEmpty(input.ProductName))
+				{
+					Product.ProductName = input.ProductName;
+				}
+				else
+				{
+					Product.ProductName = Product.ProductName;
+				}
+				if (!string.IsNullOrEmpty(input.ProductDescription))
+				{
+					Product.ProductDescription = input.ProductDescription;
+				}
+				else
+				{
+					Product.ProductDescription = Product.ProductDescription;
+				}
+				if (!string.IsNullOrEmpty(input.ImageURL))
+				{
+					Product!.ImageURL = input.ImageURL;
+				}
+				else
+				{
+					Product.ImageURL = Product.ImageURL;
+				}
+				if (input.OrginalPrice > 0)
+				{
+					Product!.OrginalPrice = input.OrginalPrice;
+				}
+				else
+				{
+					Product.OrginalPrice = Product.OrginalPrice;
+				}
+				if (input.DiscountPrice > 0)
+				{
+					Product.DiscountPrice = input.DiscountPrice;
+				}
+				else
+				{
+					Product.DiscountPrice = Product.DiscountPrice;
+				}
+				//to do bahare
+
+				//if (input.IsActive == 0 || 1)
+				//{
+				//    Product.IsActive = input.IsActive;
+				//}
+				//else
+				//{
+				//    Product.IsActive = Product.IsActive;
+				//}
+				if (input.Count > 0)
+				{
+					Product.Count = input.Count;
+				}
+				else
+				{
+					Product.Count = 0;
+				}
+				if (input.Like > 0)
+				{
+					Product.Like = input.Like;
+				}
+				else
+				{
+					Product.Like = Product.Like;
+				}
+				if (input.discountpercent > 0)
+				{
+					Product.discountpercent = input.discountpercent;
+				}
+				else
+				{
+					Product.discountpercent = Product.discountpercent;
+				}
+
+				context.SaveChanges();
+				return true;
+			}
+            catch (Exception) {
+            return false;
             }
-            else
-            {
-                Product!.ProductName = input.ProductName;
-            }
-            if (!string.IsNullOrEmpty(input.ProductDescription))
-            {
-                Product!.ProductDescription = input.ProductDescription;
-            }
-            else
-            {
-                Product!.ProductDescription = input.ProductDescription;
-            }
-            if (!string.IsNullOrEmpty(input.ImageURL))
-            {
-                Product!.ImageURL = input.ImageURL;
-            }
-            else
-            {
-                Product!.ImageURL = input.ImageURL;
-            }
-            if (input.OrginalPrice>0)
-            {
-                Product!.OrginalPrice = input.OrginalPrice;
-            }
-            else
-            {
-                Product!.OrginalPrice = input.OrginalPrice;
-            }
-            if(input.DiscountPrice > 0)
-            {
-                Product!.DiscountPrice = input.DiscountPrice;
-            }
-            else
-            {
-                Product.DiscountPrice = input.DiscountPrice;
-            }
-            //to do bahare
-           
-            //if (input.IsActive == 0 || 1)
-            //{
-            //    Product!.IsActive = input.IsActive;
-            //}
-            //else
-            //{
-            //    Product!.IsActive = input.IsActive;
-            //}
-            if (input.Count > 0)
-            {
-                Product!.Count = input.Count;
-            }
-            else
-            {
-                Product!.Count = 0;
-            }
-            if(input.Like>0)
-            {
-                Product!.Like = input.Like;
-            }
-            else
-            {
-                Product!.Like = input.Like;
-            }
-            if (input.discountpercent > 0)
-            {
-                Product!.discountpercent=input.discountpercent;
-            }
-            else
-            {
-                Product!.discountpercent = input.discountpercent;
-            }
-          
-            context.SaveChanges();
-            return "محصول کاربر بروزرسانی شد";
         }
         public string Delete(DeleteProduct input)
         {

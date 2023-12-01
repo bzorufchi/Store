@@ -15,38 +15,75 @@ namespace Store.API
         {
             var data = context.Country.Select(c => new GetAllCountruOutput()
             {
+                Id = c.Id,
+                IsActive = c.IsActive,
                 CountryName = c.CountryName,
                 CreateDate = c.CreateDate,
 
             }).ToList();
             return data;
         }
-        public void AddCountry(AddCountryInput input)
+        public bool AddCountry(AddCountryInput input)
         {
-            context.Country.Add(new Country()
+            try
             {
-                CountryName = input.CountryName,
-            });
-            context.SaveChanges();
+				context.Country.Add(new Country()
+				{
+					CountryName = input.CountryName,
+				});
+				context.SaveChanges();
+                return true;
+			}
+            catch (Exception)
+            {
+                return false;
+            }
         }
-        public string UpdateCountry(UpdateCountryInput input)
+        public bool UpdateCountry(UpdateCountryInput input)
         {
 
-            var Country = context.Country.Where(c => c.Id == input.Id).FirstOrDefault();
-            if (!string.IsNullOrEmpty(input.CountryName))
+            try
             {
-                Country!.CountryName = input.CountryName;
-            }
-            else
-            {
-                Country!.CountryName = input.CountryName;
-            }
+				var Country = context.Country.Where(c => c.Id == input.Id).FirstOrDefault();
+				if (!string.IsNullOrEmpty(input.CountryName))
+				{
+					Country.CountryName = input.CountryName;
+				}
+				else
+				{
+					Country.CountryName = Country.CountryName;
+				}
 
-            context.SaveChanges();
-            return " کشور بروزرسانی شد";
+				context.SaveChanges();
+				return true ;
+			}
+            catch { 
+                return false; 
+            }
         }
 
-        public string DeleteCountry(DeleteCountry input)
+		public string Delete(DeleteCountry input)
+		{
+			if (input.Id == 0)
+			{
+				throw new Exception("");
+			}
+			else
+			{
+				var Country = context.Country.Where(c => c.Id == input.Id).FirstOrDefault();
+				if (Country == null)
+				{
+					throw new Exception("");
+				}
+				else
+				{
+					Country.IsActive = 0;
+					context.SaveChanges();
+					return "محصول با موفقیت غیر فعال شد";
+				}
+			}
+		}
+		public string DeleteCountry(DeleteCountry input)
         {
             if (input.Id == 0)
             {

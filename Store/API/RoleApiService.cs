@@ -17,37 +17,77 @@ namespace Store.API
             {
                 // to do bahare
                 // Id اضافه شود
+                Id = R.Id,
                 RoleName = R.RoleName,
                 CreateDate = R.CreateDate,
+                IsActive = R.IsActive
             }).ToList();
             return data;
         }
-        public void AddRole(AddRoleInput input)
+        public bool AddRole(AddRoleInput input)
         {
-            context.Role.Add(new Role()
+            try
             {
-                RoleName = input.RoleName,
-            });
-            context.SaveChanges();
+				context.Role.Add(new Role()
+				{
+					RoleName = input.RoleName,
+					IsActive = input.IsActive
+				});
+				context.SaveChanges();
+                return true;
+			}
+            catch (Exception) { 
+            return false;
+            }
+			
         }
-        public string UpdateRole(UpdateRoleInput input)
+           
+        public bool UpdateRole(UpdateRoleInput input)
         {
 
-            var Role = context.Role.Where(R => R.Id == input.Id).FirstOrDefault();
-            if (!string.IsNullOrEmpty(input.RoleName))
+            try
             {
-                Role!.RoleName = input.RoleName;
-            }
-            else
+				var Role = context.Role.Where(R => R.Id == input.Id).FirstOrDefault();
+				if (!string.IsNullOrEmpty(input.RoleName))
+				{
+					Role!.RoleName = input.RoleName;
+				}
+				else
+				{
+					Role!.RoleName = Role.RoleName;
+				}
+
+				context.SaveChanges();
+                return true;
+			}
+            catch (Exception)
             {
-                Role!.RoleName = Role.RoleName;
+                return false;
             }
 
-            context.SaveChanges();
-            return "نقش کاربر بروزرسانی شد";
-        }
-
-        public string DeleteRole(DeleteRole input)//int id
+			}
+		public string Delete(DeleteRole input)
+		{
+			if (input.Id == 0)
+			{
+				throw new Exception("");
+			}
+			else
+			{
+				var Role = context.Role.Where(R => R.Id == input.Id).FirstOrDefault();
+				if (Role == null)
+				{
+					throw new Exception("");
+				}
+				else
+				{
+					Role.IsActive = 0;
+					context.SaveChanges();
+					return "محصول با موفقیت غیر فعال شد";
+				}
+			}
+		}
+		public string DeleteRole(DeleteRole input)//int id
         {
 
             if (input.Id == 0)

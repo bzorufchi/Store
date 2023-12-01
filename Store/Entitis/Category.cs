@@ -7,7 +7,7 @@
         public string Description { get; set; } = string.Empty;
         public int CategoryParent { get; set; }
         public DateTime CreateDate { get; set; }
-
-        public ICollection<Product> Products { get; set; }
+		public int IsActive { get; set; }
+		public ICollection<Product> Products { get; set; }
     }
 }
