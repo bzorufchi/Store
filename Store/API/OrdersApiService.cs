@@ -1,9 +1,12 @@
-﻿using Store.Entitis;
+﻿using Microsoft.AspNetCore.Mvc;
+using Store.Entitis;
 using Store.Models;
 using System.Diagnostics.Eventing.Reader;
 
 namespace Store.API
 {
+    [Route("api/Orders")]
+    [ApiController]
     public class OrdersApiService
     {
         private readonly StoreDbContext context;
@@ -12,6 +15,7 @@ namespace Store.API
         {
             this.context = context;
         }
+		[HttpGet("GetAllOrders")]
         public List<GetAllOrdersOutput> GetAllOrders()
         {
             var data = context.Orders.Select(o => new GetAllOrdersOutput()
@@ -27,6 +31,7 @@ namespace Store.API
             }).ToList();
             return data;
         }
+		[HttpPost("AddOrders")]
         public bool AddOrders(AddOrdersInput input)
         {
             try
@@ -46,6 +51,7 @@ namespace Store.API
                 return false;
             }
         }
+		[HttpPost("UpdateOrders")]
         public bool UpdateOrders(UpdateOrdersInput input)
         {
             try
@@ -96,7 +102,7 @@ namespace Store.API
                 return false;
             }
         }
-
+		[HttpPost("Delete")]
 		public string Delete(DeleteOrders input)
 		{
 			if (input.Id == 0)
@@ -118,6 +124,7 @@ namespace Store.API
 				}
 			}
 		}
+		[HttpPost("DeleteOrders")]
 		public string DeleteOrders(DeleteOrders input)
         {
             if (input.Id == 0)

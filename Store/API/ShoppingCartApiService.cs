@@ -1,9 +1,12 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Store.Entitis;
 using Store.Models;
 
 namespace Store.API
 {
+    [Route("api/ShoppingCart")]
+    [ApiController]
     public class ShoppingCartApiService
     {
         private readonly StoreDbContext context;
@@ -12,6 +15,7 @@ namespace Store.API
         {
             this.context = context;
         }
+        [HttpGet("GetAllCart")]
         public List<GetAllShoppingCartOutput> GetAllCart()
         {
             var data = context.ShoppingCart.Select(S => new GetAllShoppingCartOutput()
@@ -26,6 +30,7 @@ namespace Store.API
             }).ToList();
             return data;
         }
+        [HttpPost("AddShoppingCart")]
         public void AddShoppingCart(AddShoppingCartInput input)
         {
             context.ShoppingCart.Add(new ShoppingCart()
@@ -41,6 +46,7 @@ namespace Store.API
 			});
             context.SaveChanges();
         }
+        [HttpPost("UpdateShoppingCart")]
         public string UpdateShoppingCart(UpdateShoppingCartInput input)
         {
             //to do hame
@@ -49,38 +55,39 @@ namespace Store.API
             var ShoppingCart = context.ShoppingCart.Where(S => S.Id ==input.id).FirstOrDefault();
             if (!string.IsNullOrEmpty(input.PeymentState))
             {
-                ShoppingCart!.PeymentState = input.PeymentState;
+                ShoppingCart.PeymentState = input.PeymentState;
             }
             else
             {
-                ShoppingCart!.PeymentState=input.PeymentState;
+                ShoppingCart.PeymentState=input.PeymentState;
             }
             if (!string.IsNullOrEmpty(input.PeymentMethod))
             {
-                ShoppingCart!.PeymentMethod=input.PeymentMethod;
+                ShoppingCart.PeymentMethod=input.PeymentMethod;
             }
             else
             {
-                ShoppingCart!.PeymentMethod = input.PeymentMethod;
+                ShoppingCart.PeymentMethod = input.PeymentMethod;
             }
             if (input.FixedPrice > 0)
             {
-                ShoppingCart!.FixedPrice = input.FixedPrice;
+                ShoppingCart.FixedPrice = input.FixedPrice;
             }
             else
             {
-                ShoppingCart!.FixedPrice=0;
+                ShoppingCart.FixedPrice=0;
             }
             if (input.Count > 0)
             {
-                ShoppingCart!.Count = input.Count;
+                ShoppingCart.Count = input.Count;
             }
             else {
-                ShoppingCart!.Count=0;
+                ShoppingCart.Count=0;
             }
             context.SaveChanges();
             return "سبد خرید کاربر بروزرسانی شد";
         }
+        [HttpPost("Delete")]
 		public string Delete(DeleteShoppingCart input)
 		{
 			if (input.id == 0)
@@ -102,6 +109,7 @@ namespace Store.API
 				}
 			}
 		}
+        [HttpPost("DeleteCart")]
 		public string DeleteCart(DeleteShoppingCart input)
         {
             if (input.id == 0)

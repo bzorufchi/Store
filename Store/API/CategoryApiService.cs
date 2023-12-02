@@ -1,8 +1,11 @@
-﻿using Store.Entitis;
+﻿using Microsoft.AspNetCore.Mvc;
+using Store.Entitis;
 using Store.Models;
 
 namespace Store.API
 {
+    [Route("api/Category")]
+    [ApiController]
     public class CategoryApiService
     {
         private readonly StoreDbContext context;
@@ -10,7 +13,7 @@ namespace Store.API
         {
             this.context = context;
         }
-
+		[HttpGet("GetAllCategories")]
         public List<GetAllCategoryOutput> GetAllCategories()
         {
             var data = context.Category.Select(c => new GetAllCategoryOutput { 
@@ -21,6 +24,7 @@ namespace Store.API
             }).ToList();
             return data;
         }
+		[HttpPost("AddCategory")]
         public bool AddCategory(AddCategoryInput input)
         {
             try
@@ -39,6 +43,7 @@ namespace Store.API
                 return false;
             }
         }
+		[HttpPost("UpdateCategory")]
         public bool UpdateCategory(UpdateCategoryInput input)
         {
             try
@@ -82,6 +87,7 @@ namespace Store.API
 			}
            catch { return false; }
         }
+		[HttpPost("Delete")]
 		public string Delete(DeleteCategoryInput input)
 		{
 			if (input.Id == 0)
@@ -103,6 +109,7 @@ namespace Store.API
 				}
 			}
 		}
+		[HttpPost("DeleteCategory")]
 		public string DeleteCategory(DeleteCategoryInput input)
         {
             if (input.Id == 0)

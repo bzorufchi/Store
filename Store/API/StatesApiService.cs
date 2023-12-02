@@ -1,8 +1,11 @@
-﻿using Store.Entitis;
+﻿using Microsoft.AspNetCore.Mvc;
+using Store.Entitis;
 using Store.Models;
 
 namespace Store.API
 {
+    [Route("api/States")]
+    [ApiController]
     public class StatesApiService
     {
         private readonly StoreDbContext context;
@@ -11,6 +14,7 @@ namespace Store.API
         {
             this.context = context;
         }
+        [HttpGet("GetAllStates")]
         public List<GetAllStatesOutput> GetAllStates()
         {
             var data = context.States.Select(S => new GetAllStatesOutput()
@@ -23,6 +27,7 @@ namespace Store.API
 			}).ToList();
             return data;
         }
+        [HttpPost("AddStates")]
         public bool AddStates(AddStatesInput input)
         {
             // برای گرفتن زمان حال حاضر
@@ -45,6 +50,7 @@ namespace Store.API
                 return false;
             }
         }
+        [HttpPost("UpdateStates")]
         public bool UpdateStates(UpdateStatesInput input)
         {
             try
@@ -67,6 +73,7 @@ namespace Store.API
                 return false;   
             }
 			}
+        [HttpPost("Delete")]
 		public string Delete(DeleteStatesInput input)
 		{
 			if (input.Id == 0)
@@ -88,6 +95,7 @@ namespace Store.API
 				}
 			}
 		}
+        [HttpPost("DeleteُState")]
 		public string DeleteُState(DeleteStatesInput input)
         {
             if (input.Id == 0) {

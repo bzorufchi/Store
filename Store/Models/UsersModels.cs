@@ -32,7 +32,7 @@ namespace Store.Models
         public int Gender { get; set; }
 		public int IsActive { get; set; }
 	}
-    public class UpdateUserInput
+    public class UpdateUserInput 
     {
         public int Id { get; set; }
         public int RoleId { get; set; }
@@ -49,6 +49,11 @@ namespace Store.Models
         public int Gender { get; set; }
 		public int IsActive { get; set; }
 	}
+    public class UpdateRoleUser
+    {
+        public int Id { get; set; }
+        public int RoleId { get; set; }
+    }
     public class SelectUserInput
     {
         public int Id { get; set; }

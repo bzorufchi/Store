@@ -1,9 +1,12 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Store.Entitis;
 using Store.Models;
 
 namespace Store.API
 {
+    [Route("api/Product")]
+    [ApiController]
     public class ProductApiService
     {
         private readonly StoreDbContext context;
@@ -12,12 +15,12 @@ namespace Store.API
         {
             this.context = context;
         }
+        [HttpGet("GetAllProduct")]
         public List<GetAllProductOutput> GetAllProduct()
         {
             var data = context.Product.Select(p => new GetAllProductOutput()
             {
-                //to do bahare
-                //Add Id
+               
                 Id = p.Id,
                 BrandId = p.BrandId,
                 CountryId = p.CountryId,
@@ -36,8 +39,7 @@ namespace Store.API
             }).ToList();
             return data;
         }
-        //to do bahare
-        // return bool
+        [HttpPost("AddProduct")]
         public bool AddProduct(AddProductInput input)
         {
             try
@@ -61,8 +63,8 @@ namespace Store.API
             return false;
             }
         }
-        //to do bahare
-        // return bool
+        [HttpPost("UpdateProduct")]
+  
         public bool UpdateProduct(UpdateProductInput input)
         {
 
@@ -155,6 +157,7 @@ namespace Store.API
             return false;
             }
         }
+        [HttpPost("Delete")]
         public string Delete(DeleteProduct input)
         {
             if (input.Id==0)
@@ -176,6 +179,7 @@ namespace Store.API
                 }
             }
         }
+        [HttpPost("DeleteProduct")]
         public string DeleteProduct(DeleteProduct input)
         {
             if (input.Id == 0)
@@ -199,13 +203,33 @@ namespace Store.API
            
             
         }
-        // to do bahare
+        [HttpPost("AddProductLike")]
 
-        //public bool AddProductLike()
-        //{
-        //    return true;
-        //    return false;
-        //}
+        public bool AddProductLike(AddProductInput input)
+
+        {
+
+            if (input.Like == null)
+            {
+                return false;
+            }
+            else
+            {
+                var Product = context.Product.Where(p => p.Id == input.Id).FirstOrDefault();
+                if (input.Like > 0)
+                {
+                    Product.Like = Product.Like + 1;
+                }
+                else
+                {
+                    Product.Like= Product.Like;
+              
+                }
+                context.SaveChanges();
+                return true;
+            }
+
+        }
     }
     
 }

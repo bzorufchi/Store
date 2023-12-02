@@ -1,9 +1,12 @@
-﻿using Store.Entitis;
+﻿using Microsoft.AspNetCore.Mvc;
+using Store.Entitis;
 using Store.Models;
 
 namespace Store.API
 {
-    public class BrandApiService
+    [Route("api/Brand")]
+    [ApiController]
+    public class BrandApiService : ControllerBase
     {
         private readonly StoreDbContext context;
 
@@ -11,6 +14,7 @@ namespace Store.API
         {
             this.context = context;
         }
+        [HttpGet("GetAllBrand")]
         public List<GetAllBrandsOutput> GetAllBrand()
         {
             var data = context.Brands.Select(B => new GetAllBrandsOutput()
@@ -23,6 +27,7 @@ namespace Store.API
             }).ToList();
             return data;
         }
+        [HttpPost("AddBrands")]
         public bool AddBrands(AddBrandsInput input)
         {
             try
@@ -40,6 +45,7 @@ namespace Store.API
                 return false;
             }
         }
+        [HttpPost("UpdateBrands")]
         public bool UpdateBrands(UpdateBrandInput input)
         {
 
@@ -68,7 +74,7 @@ namespace Store.API
 			}
             catch { return false; }
         }
-
+        [HttpPost("Delete")]
 		public string Delete(DeleteBrandInput input)
 		{
 			if (input.Id == 0)
@@ -90,6 +96,7 @@ namespace Store.API
 				}
 			}
 		}
+        [HttpPost("DeleteRole")]
 		public string DeleteRole(DeleteBrandInput input)
 
         {

@@ -1,8 +1,11 @@
-﻿using Store.Entitis;
+﻿using Microsoft.AspNetCore.Mvc;
+using Store.Entitis;
 using Store.Models;
 
 namespace Store.API
 {
+    [Route("api/Country")]
+    [ApiController]
     public class CountryApiService
     {
         private readonly StoreDbContext context;
@@ -11,6 +14,7 @@ namespace Store.API
         {
             this.context = context;
         }
+        [HttpGet("GetAllCountry")]
         public List<GetAllCountruOutput> GetAllCountry()
         {
             var data = context.Country.Select(c => new GetAllCountruOutput()
@@ -23,6 +27,7 @@ namespace Store.API
             }).ToList();
             return data;
         }
+        [HttpPost("AddCountry")]
         public bool AddCountry(AddCountryInput input)
         {
             try
@@ -39,6 +44,7 @@ namespace Store.API
                 return false;
             }
         }
+        [HttpPost("UpdateCountry")]
         public bool UpdateCountry(UpdateCountryInput input)
         {
 
@@ -61,7 +67,7 @@ namespace Store.API
                 return false; 
             }
         }
-
+        [HttpPost("Delete")]
 		public string Delete(DeleteCountry input)
 		{
 			if (input.Id == 0)
@@ -83,6 +89,7 @@ namespace Store.API
 				}
 			}
 		}
+        [HttpPost("DeleteCountry")]
 		public string DeleteCountry(DeleteCountry input)
         {
             if (input.Id == 0)

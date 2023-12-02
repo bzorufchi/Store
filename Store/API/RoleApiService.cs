@@ -1,8 +1,11 @@
-﻿using Store.Entitis;
+﻿using Microsoft.AspNetCore.Mvc;
+using Store.Entitis;
 using Store.Models;
 
 namespace Store.API
 {
+    [Route("api/Role")]
+    [ApiController]
     public class RoleApiService
     {
         private readonly StoreDbContext context;
@@ -11,12 +14,12 @@ namespace Store.API
         {
             this.context = context;
         }
+        [HttpGet("GetAllRole")]
         public List<GetAllRoleOutput> GetAllRole()
         {
             var data = context.Role.Select(R => new GetAllRoleOutput()
             {
-                // to do bahare
-                // Id اضافه شود
+              
                 Id = R.Id,
                 RoleName = R.RoleName,
                 CreateDate = R.CreateDate,
@@ -24,6 +27,7 @@ namespace Store.API
             }).ToList();
             return data;
         }
+        [HttpPost("AddRole")]
         public bool AddRole(AddRoleInput input)
         {
             try
@@ -41,7 +45,7 @@ namespace Store.API
             }
 			
         }
-           
+        [HttpPost("UpdateRole")]
         public bool UpdateRole(UpdateRoleInput input)
         {
 
@@ -50,11 +54,11 @@ namespace Store.API
 				var Role = context.Role.Where(R => R.Id == input.Id).FirstOrDefault();
 				if (!string.IsNullOrEmpty(input.RoleName))
 				{
-					Role!.RoleName = input.RoleName;
+					Role.RoleName = input.RoleName;
 				}
 				else
 				{
-					Role!.RoleName = Role.RoleName;
+					Role.RoleName = Role.RoleName;
 				}
 
 				context.SaveChanges();
@@ -66,6 +70,7 @@ namespace Store.API
             }
 
 			}
+        [HttpPost("Delete")]
 		public string Delete(DeleteRole input)
 		{
 			if (input.Id == 0)
@@ -87,6 +92,7 @@ namespace Store.API
 				}
 			}
 		}
+        [HttpPost("DeleteRole")]
 		public string DeleteRole(DeleteRole input)//int id
         {
 

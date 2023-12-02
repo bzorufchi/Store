@@ -1,8 +1,11 @@
-﻿using Store.Entitis;
+﻿using Microsoft.AspNetCore.Mvc;
+using Store.Entitis;
 using Store.Models;
 
 namespace Store.API
 {
+    [Route("api/Comments")]
+    [ApiController]
     public class CommentsApiService
     {
         private readonly StoreDbContext context;
@@ -11,6 +14,7 @@ namespace Store.API
         {
             this.context = context;
         }
+        [HttpGet("GetAllComments")]
         public List<GetAllCommentsOutput> GetAllComments()
         {
             var data = context.Comments.Select(c => new GetAllCommentsOutput()
@@ -25,6 +29,7 @@ namespace Store.API
             }).ToList();
             return data;
         }
+        [HttpGet("GetCommentsByProductId")]
 
         public List<GetAllCommentsOutput> GetCommentsByProductId(int ProductId)
         {
@@ -41,7 +46,8 @@ namespace Store.API
 			}).ToList();
             return data;
         }
-            public bool Addcomments(AddCommentsInput input)
+        [HttpPost("Addcomments")]
+        public bool Addcomments(AddCommentsInput input)
         {
             try
             {
@@ -64,6 +70,7 @@ namespace Store.API
                 return false;
             }
         }
+        [HttpPost("UpdateComments")]
         public bool UpdateComments(UpdateCommentsInput input)
         {
             try
@@ -84,7 +91,7 @@ namespace Store.API
 			}
             catch { return false; }
         }
-
+        [HttpPost("Delete")]
 		public string Delete(DeleteComments input)
 		{
 			if (input.Id == 0)
@@ -106,6 +113,7 @@ namespace Store.API
 				}
 			}
 		}
+        [HttpPost("DeleteComments")]
 		public string DeleteComments(DeleteComments input)
         {    //check kardan vorudi
             if (input.Id == 0)
