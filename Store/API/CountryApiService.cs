@@ -6,7 +6,7 @@ namespace Store.API
 {
     [Route("api/Country")]
     [ApiController]
-    public class CountryApiService
+    public class CountryApiService : ControllerBase
     {
         private readonly StoreDbContext context;
 

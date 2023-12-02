@@ -6,7 +6,7 @@ namespace Store.API
 {
     [Route("api/Comments")]
     [ApiController]
-    public class CommentsApiService
+    public class CommentsApiService : ControllerBase
     {
         private readonly StoreDbContext context;
 

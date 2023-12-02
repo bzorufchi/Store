@@ -7,7 +7,7 @@ namespace Store.API
 {
     [Route("api/Orders")]
     [ApiController]
-    public class OrdersApiService
+    public class OrdersApiService : ControllerBase
     {
         private readonly StoreDbContext context;
 

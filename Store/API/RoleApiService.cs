@@ -6,7 +6,7 @@ namespace Store.API
 {
     [Route("api/Role")]
     [ApiController]
-    public class RoleApiService
+    public class RoleApiService : ControllerBase
     {
         private readonly StoreDbContext context;
 
