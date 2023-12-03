@@ -52,4 +52,14 @@
     {
         public int Id { get; set; }
     }
+    public class GetLastProductsOutput
+    {
+        public int Id { get; set; }
+        public string ProductName { get; set; }
+        public int Count { get; set; }
+        public int OrginalPrice { get; set; }
+        public int DiscountPrice { get; set;}
+        public string ImageURL { get; set; }
+
+    }
 }

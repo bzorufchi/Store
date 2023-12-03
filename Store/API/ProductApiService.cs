@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Store.Entitis;
 using Store.Models;
@@ -204,7 +206,6 @@ namespace Store.API
             
         }
         [HttpPost("AddProductLike")]
-
         public bool AddProductLike(AddProductInput input)
 
         {
@@ -229,6 +230,18 @@ namespace Store.API
                 return true;
             }
 
+        }
+        [HttpGet("GetLastProducts/{count}")]
+        public List<GetLastProductsOutput> GetLastProducts(int count)
+        {
+           SqlParameter[] sqlParameters = new SqlParameter[]
+           {
+               new SqlParameter("@count",count)
+           };
+
+            var result = context.Database.SqlQueryRaw<GetLastProductsOutput>("EXEC dbo.sp_GetLastProducts @count", sqlParameters).AsEnumerable().ToList();
+
+            return result;
         }
     }
     

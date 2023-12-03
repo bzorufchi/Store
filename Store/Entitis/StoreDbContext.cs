@@ -25,5 +25,6 @@ namespace Store.Entitis
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<ShoppingCart> ShoppingCart { get; set; }
         public virtual DbSet<States> States { get; set; }
+        public virtual DbSet<Ticket> Ticket { get; set; }
     }
 }

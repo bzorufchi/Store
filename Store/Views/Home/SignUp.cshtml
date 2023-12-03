@@ -1,77 +1,81 @@
 ﻿@{
     ViewData["Title"] = "SignUp";
 	<link rel="stylesheet" href="~/css/SignUp.css" asp-append-version="true" />
+   
 }
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<script src="~/js/SignUp.js" asp-append-version="true"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<div class="body">
-	<div class="veen">
-		<div class="login-btn splits">
-			<p>Already an user?</p>
-			<button class="active">Login</button>
-		</div>
-		<div class="rgstr-btn splits">
-			<p>Don't have an account?</p>
-			<button>Register</button>
-		</div>
-		<div class="wrapper">
-			<form id="login" tabindex="500">
-				<h3>Login</h3>
-				<div class="mail">
-					<input type="mail" name="">
-					<label>Mail or Username</label>
-				</div>
-				<div class="passwd">
-					<input type="password" name="">
-					<label>Password</label>
-				</div>
-				<div class="submit">
-					<button class="dark">Login</button>
-				</div>
-			</form>
-			<form id="register" tabindex="502">
-				<h3>Register</h3>
-				<div class="name">
-					<input type="text" name="">
-					<label>Full Name</label>
-				</div>
-				<div class="mail">
-					<input type="mail" name="">
-					<label>Mail</label>
-				</div>
-				<div class="uid">
-					<input type="text" name="">
-					<label>User Name</label>
-				</div>
-				<div class="passwd">
-					<input type="password" name="">
-					<label>Password</label>
-				</div>
-				<div class="submit">
-					<button class="dark">ثبت نام</button>
-				</div>
-			</form>
-		</div>
-	</div>
-</div>
+
+  <style>
+         font-face{
+        font-family: 'Iran';
+        src: url(../wwwroot/fonts/woff/IRANSansWeb_Medium.woff);
+      }
+*{
+  
+  padding: 0%;
+  margin: 0% ;
+  font-family: 'Iran';
+}
+    </style>
 
 
-<style type="text/css">
-	.site-link {
-		padding: 5px 15px;
-		position: fixed;
-		z-index: 99999;
-		background: #fff;
-		box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
-		right: 30px;
-		bottom: 30px;
-		border-radius: 10px;
-	}
+    <div class="body">
+        <div class="veen bg-success">
+            <div class="login-btn splits">
+                <p>به فروشگاه بهاره خوش آمدید</p>
+                <button class="active background text-white">ورود</button>
+            </div>
+            <div class="rgstr-btn splits">
+                <p>آیا شما حساب کاربری ندارید؟</p>
+                <button class="background text-white">ثبت نام</button>
+            </div>
+            <div class="wrapper">
+                <form id="login" tabindex="500">
+                    <h3 class="text-black ">ورود</h3>
+                    <div class="mail">
+                        <input type="text" name="" id="username">
+                        <label>ایمیل یا نام کاربری</label>
+                    </div>
+                    <div class="passwd">
+                        <input type="password" name="" id="password">
+                        <label>رمز عبور</label>
+                    </div>
+                    <div class="submit">
+                        <a href="#" class="dark " onclick="Login()" >ورود</a>
+                        <button class="text-danger">فراموشی رمز عبور</button>
+                    </div>
 
-		.site-link img {
-			width: 30px;
-			height: 30px;
-		}
-</style>
+                </form>
+                <form id="register" tabindex="502" class="pt-5">
+                    <h3 class="text-black mt-5">ثبت نام</h3>
+                    <div class="name">
+                        <input type="text" name="" id="name">
+                        <label>نام</label>
+                    </div>
+                    <div class="name">
+                        <input type="text" name="" id="familyname">
+                        <label>نام خانوادگی</label>
+                    </div>
+                    <div class="name">
+                        <input type="text" name="" id="phonenumber">
+                        <label>شماره تلفن</label>
+                    </div>
+                    <div class="uid">
+                        <input type="text" name="" id="usernameregister">
+                        <label>نام کاربری(کد ملی)</label>
+                    </div>
+                    <div class="passwd">
+                        <input type="password" name="" id="passwordregister"> 
+                        <label>رمز عبور(کد ملی)</label>
+                    </div>
+                    <div class="submit mt-3">
+                        <a href="#" class="dark" onclick="Register()">ثبت نام</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="~/js/SignUp.js"></script>
+<script src="~/js/helpers/ajax.js"></script>

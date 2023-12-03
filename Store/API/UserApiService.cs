@@ -49,6 +49,25 @@ namespace Store.API
             return user;
         }
 
+        [HttpPost("Login")]
+        public bool Login(LoginUsers input)
+        {
+            try
+            {
+                var user=context.User.Where(u=>u.UserName==input.UserName).First();
+                if (user==null)
+                {
+                    return false;
+                }
+                else
+                    return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         [HttpPost("AddUser")]
         public bool AddUser(AddUserInput input)
         {
@@ -56,17 +75,17 @@ namespace Store.API
             {
                 context.User.Add(new User()
                 {
-                    BirthDate = input.BirthDate,
+                    BirthDate = DateTime.Now,
                     FirstName = input.FirstName,
                     FamilyName = input.FamilyName,
-                    Gender = input.Gender,
-                    NationalCode = input.NationalCode,
+                    Gender = 0,
+                    NationalCode = input.UserName,
                     Password = input.Password,
                     PhoneNumber = input.PhoneNumber,
-                    RoleId = input.RoleId,
+                    RoleId = 2,
                     UserName = input.UserName,
-
-					IsActive = input.IsActive
+					IsActive = 1,
+                    CreateDate=DateTime.Now,
 				});
                 context.SaveChanges();
                 return true;
@@ -223,15 +242,15 @@ namespace Store.API
             }
             else
             {
-                var user = context.User.Where(u => u.RoleId == input.RoleId && u.Id==input.Id).FirstOrDefault();
-                if (input.RoleId==user.RoleId)
+                var user = context.User.Where(u => u.Id==input.Id).FirstOrDefault();
+
+                if (input.RoleId > 0)
                 {
-                    user.RoleId = user.RoleId;
+                    user.RoleId = input.RoleId;
                 }
                 else
                 {
-                    user.RoleId=input.RoleId;
-                   
+                    user.RoleId = user.RoleId;
                 }
                 context.SaveChanges();
                 return true;

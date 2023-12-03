@@ -1,11 +1,25 @@
 ﻿.body {
-    background: green;
+    background: url(../img/ashim-d-silva-ZmgJiztRHXE-unsplash.jpg);
+    background-size: cover;
     transition: all .5s;
     padding: 1px;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.dark {
+    background-color: #2f66ff !important;
+    color: white !important;
+    padding: 10px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+}
+
+.background {
+    background-color: rgb(255, 0, 208) !important;
+    border: none !important;
 }
 
 .veen {
@@ -27,26 +41,15 @@
 
     .veen button {
         background: transparent;
-        //background-image: linear-gradient(90deg, #e0b722, #ff4931);
+        background-color: white;
         display: inline-block;
         padding: 10px 30px;
         border: 3px solid #fff;
         border-radius: 50px;
         background-clip: padding-box;
         position: relative;
-        color: #FFF;
-        //box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+        color: #000000;
         transition: all .25s;
-    }
-
-        .veen button.dark {
-            border-color: #ff4931;
-            background: #ff4931;
-        }
-
-    .veen .move button.dark {
-        border-color: #e0b722;
-        background: #e0b722;
     }
 
     .veen .splits p {
@@ -63,14 +66,13 @@
 
     .veen > .wrapper {
         position: absolute;
-        width: 40%;
+        width: 45%;
         height: 120%;
         top: -10%;
         left: 5%;
         background: #fff;
         box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
         transition: all .5s;
-        color: #303030;
         overflow: hidden;
     }
 
@@ -136,7 +138,8 @@
     }
 
     .veen .wrapper input {
-        height: 40px padding: 5px 15px;
+        height: 40px;
+        padding: 5px 15px;
         width: 100%;
         border: solid 1px #999;
     }
@@ -154,61 +157,7 @@
             border-color: #e0b722;
         }
 
-@media (max-width: 767px) {
-    .veen {
-        padding: 5px;
-        margin: 0;
-        width: 100%;
-        display: block;
-    }
 
-        .veen > .wrapper {
-            position: relative;
-            height: auto;
-            top: 0;
-            left: 0;
-            width: 100%;
-        }
-
-        .veen > div {
-            display: inline-block;
-        }
-
-    .splits {
-        width: 50%;
-        background: #fff;
-        float: left;
-    }
-
-        .splits button {
-            width: 100%;
-            border-radius: 0;
-            background: #505050;
-            border: 0;
-            opacity: .7;
-        }
-
-            .splits button.active {
-                opacity: 1;
-            }
-
-            .splits button.active {
-                opacity: 1;
-                background: #ff4931;
-            }
-
-        .splits.rgstr-btn button.active {
-            background: #e0b722;
-        }
-
-        .splits p {
-            display: none;
-        }
-
-    .veen > .wrapper.move {
-        left: 0%;
-    }
-}
 
 input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     box-shadow: inset 0 0 0 50px #fff
