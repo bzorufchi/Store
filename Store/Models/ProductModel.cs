@@ -62,4 +62,14 @@
         public string ImageURL { get; set; }
 
     }
+    public class GetMaxProductLike
+    {
+        public int Id { get; set; }
+        public int Like { get; set; }
+        public string ProductName { get; set; }
+        public string ImageURL { get; set; }
+        public int Count { get; set; }
+        public int OrginalPrice { get; set; }
+        public int DiscountPrice { get; set; }
+    }
 }
