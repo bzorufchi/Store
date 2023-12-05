@@ -62,7 +62,7 @@
         public string ImageURL { get; set; }
 
     }
-    public class GetMaxProductLike
+    public class GetMaxProductLikeOutput
     {
         public int Id { get; set; }
         public int Like { get; set; }
