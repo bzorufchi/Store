@@ -261,8 +261,8 @@ namespace Store.API
             }
             return list;
         }
-        [HttpPost("MaxProductLike")]
-        public List<GetMaxProductLikeOutput> GetMaxProductLike(int count)
+        [HttpPost("GetMaxProductLike")]
+        public List<GetMaxProductLikeOutput> GetMaxProductLike([FromBody] int count)
         {
             List<GetMaxProductLikeOutput> list = new List<GetMaxProductLikeOutput>();
             using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
