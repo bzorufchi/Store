@@ -234,7 +234,7 @@ namespace Store.API
 
         }
         [HttpPost("GetLastProducts")]
-        public List<GetMaxProductLikeOutput> GetLastProducts([FromBody] int count)
+        public List<GetLastProductsOutput> GetLastProducts([FromBody] int count)
         {
             List<GetLastProductsOutput> list = new List<GetLastProductsOutput>();
             using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
@@ -293,6 +293,76 @@ namespace Store.API
             }
             return list;
         }
+        [HttpPost("GetShowAllProducts")]
+        public List<GetShowAllProductsOutput> GetShowAllProducts([FromBody] int count)
+        {
+            List<GetShowAllProductsOutput> list = new List<GetShowAllProductsOutput>();
+            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlCommand cmd = new SqlCommand("dbo.sp_GetShowProduct", conn))
+            {
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("", count));
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    list.Add(new GetShowAllProductsOutput()
+                    {
+                        Count = Convert.ToInt32(reader["Count"]),
+                        Id = Convert.ToInt32(reader["Id"]),
+                        ImageURL = (reader["ImageURL"]).ToString(),
+                        OrginalPrice = Convert.ToInt32(reader["OrginalPrice"]),
+                        ProductDescription = (reader["ProductDescription"]).ToString(),
+                        ProductName = (reader["ProductName"]).ToString()
+                    });
+                }
+                conn.Close();
+
+            }
+            return list;
+        }
+        
+        [HttpPost("GetShowSingleProducts")]
+        public List<GetShowSingleProducts> GetShowSingleProducts([FromBody]int count)
+        {
+            List<GetShowSingleProducts> list = new List<GetShowSingleProducts>();
+            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlCommand cmd = new SqlCommand("dbo.sp_GetShowSingleProduct", conn))
+            {
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@Id", count));
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    list.Add(new GetShowSingleProducts()
+                    {
+                        BrandId = Convert.ToInt32(reader["BrandId"]),
+                        CountryId= Convert.ToInt32(reader["CountryId"]),
+                        CategoryId= Convert.ToInt32(reader["CategoryId"]),
+                        Count = Convert.ToInt32(reader["Count"]),
+                        ImageURL = (reader["ImageURL"]).ToString(),
+                        Id = Convert.ToInt32(reader["Id"]),
+                        Like= Convert.ToInt32(reader["Like"]),
+                        OrginalPrice= Convert.ToInt32(reader["OrginalPrice"]),
+                        ProductName = (reader["ProductName"]).ToString(),
+                        ProductDescription = (reader["ProductDescription"]).ToString(),
+                        
+                        DiscountPrice = Convert.ToInt32(reader["DiscountPrice"]),
+                        IsActive = Convert.ToInt32(reader["IsActive"])
+                    });
+                }
+                conn.Close();
+
+            }
+            return list;
+
+
+        }
+
+
     }
    
 }
+
+
