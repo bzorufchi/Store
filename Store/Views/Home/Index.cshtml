@@ -2,3 +2,69 @@
     ViewData["Title"] = "Home Page";
 }
 
+   <!-- /*header*/ -->
+   <div class="section1">
+    <h1 class="mb-3">فروشگاه بهاره</h1>
+    <p class="mb-xl-5  mt-5">در فروشگاه ما بهترین محصولات با کیفیت و قیمت مناسب عرضه می شود.</p>
+    <a class="mt-5" href="#">مشاهده محصولات</a>
+   </div>
+   <!--section2-->
+   <div class="bakhsh1">
+    <div class="avali"><h1 class="n"></div>
+    <div class="dovomi">
+      <div class="x"><h1 class="n"></div>
+      <div  class="z"><h1 class="n"></div>
+    </div>
+  </div>
+  <!--section3-->
+  <div class="text-center  mt-5 mb-5">
+    <h3>مشاهده محصولات</h3>
+  </div>
+
+  <div class="swiper">
+    <div class="swiper-wrapper" id="123" >
+    
+    
+    
+      
+    
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+
+  
+  <div class="swiper">
+    <div class="swiper-wrapper" id="slider2">
+     
+     
+      
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+  <!--section4-->
+  <div  class="text-center pt-5 ticket" style="background-color:#90d4e9;">
+    <h3 class="text-black ">ارسال تیکت به ما</h3>
+    <div class="d-flex mt-5" style="width: 100%;justify-content: center;">
+       <div style="width: 50%;"><img class="" src="/img/bruce-mars-FWVMhUa_wbY-unsplash.jpg" style="width: 55%;height: 32vh;border-radius: 10px;"></div>
+       <div style="width: 50%;" class="pt-2">
+        <p class="mt-4 mb-3" style="font-size:20px;">کاربران گرامی، رضایت خود را درباره سایت و محصولات  برای ما تیکت نمایید.</p>
+        <label>ایمیل</label>
+        <input id="emailticket" type="text" style="width: 30%">
+        <br>
+        <input class="mt-4 mb-4" type="radio" id="razi" name="fav_language" value="1">
+          <label for="html">از خدمات سایت راضی هستم</label><br>
+          <input class="mt-2 mb-lg-5 " type="radio" id="notrazi" name="fav_language" value="2">
+          <label for="css" >از خدمات سایت راضی نیستم</label>
+        <br>
+        <a onclick="addTicket()" class="submittiket">ثبت تیکت</a>
+    </div>
+    </div>
+  </div>
+  <!-- Swiper JS -->
+@section Scripts {
+    <script src="~/js/firstpageslider.js"></script>
+}
+
+

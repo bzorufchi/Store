@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Store.Entitis;
 using Store.Models;
+using System.Data;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Store.API
 {
@@ -22,7 +25,6 @@ namespace Store.API
                 Id = c.Id,
                 IsActive = c.IsActive,
                 Text = c.Text,
-                IsAccepted = c.IsAccepted,
                 IsAcceptedDate=c.IsAcceptedDate,
                 CreateDate=c.CreateDate,
                 ByUserId = c.ByUserId
@@ -37,7 +39,6 @@ namespace Store.API
             {
                 Id = c.Id,
                 Text = c.Text,
-                IsAccepted = c.IsAccepted,
                 IsAcceptedDate = c.IsAcceptedDate,
                 CreateDate = c.CreateDate,  
                 ByUserId = c.ByUserId,
@@ -46,30 +47,34 @@ namespace Store.API
 			}).ToList();
             return data;
         }
+
         [HttpPost("Addcomments")]
         public bool Addcomments(AddCommentsInput input)
         {
             try
             {
-				context.Comments.Add(new Comments()
-				{
+                using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+                using (SqlCommand cmd = new SqlCommand("dbo.sp_AddComments", conn))
+                {
+                    conn.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@ProductId", input.ProductId));
+                    cmd.Parameters.Add(new SqlParameter("@UserId", input.UserId));
+                    cmd.Parameters.Add(new SqlParameter("@Text", input.Text));
+                    SqlDataReader reader = cmd.ExecuteReader();
 
-					Text = input.Text,
-					IsAccepted = input.IsAccepted,
-					IsAcceptedDate = input.IsAcceptedDate,
-					ByUserId = input.ByUserId,
-					UserId = input.UserId,
-					ProductId = input.ProductId,
+                    conn.Close();
 
-				});
-				context.SaveChanges();
+                }
                 return true;
-			}
-            catch (Exception)
-            {
-                return false;
+
             }
-        }
+            catch (Exception ) { 
+            return false;
+            }
+
+
+    }
         [HttpPost("UpdateComments")]
         public bool UpdateComments(UpdateCommentsInput input)
         {
@@ -79,7 +84,7 @@ namespace Store.API
 				if (!String.IsNullOrEmpty(input.Text))
 				{
 					Comments.Text = input.Text;
-					Comments.IsAccepted = 0;
+					Comments.IsAccepted = false;
 				}
 				else
 				{
@@ -148,5 +153,35 @@ namespace Store.API
                
            
         }
+
+        [HttpPost("GetProductComments")]
+        public List<GetProductComments> GetProductComments([FromBody]int ProductId)
+        {
+            List<GetProductComments> list = new List<GetProductComments>();
+            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlCommand cmd = new SqlCommand("dbo.sp_GetProductComments", conn))
+            {
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@ProductId", ProductId));
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    list.Add(new GetProductComments()
+                    {
+                        Id = Convert.ToInt32(reader["ID"]),
+                        username = (reader["username"]).ToString(),
+                        Text = (reader["Text"]).ToString()
+                    }) ;
+                }
+                conn.Close();
+
+            }
+            return list;
+
+
+        
+    }
+
     }
 }

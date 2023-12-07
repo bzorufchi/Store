@@ -23,8 +23,16 @@ function Login(){
 	}
 	callAjax("User/Login",input,AfterLogin,param,"POST")
 }
-function AfterLogin(param){
-console.log(param)
+function AfterLogin(param) {
+	if (param.serverResponse.userid > 0) {
+		localStorage.setItem('userid', param.serverResponse.userid);
+		localStorage.setItem('roleid', param.serverResponse.roleId);
+		localStorage.setItem('time', param.serverResponse.expTime);
+		location.replace('/');
+	}
+	else {
+		Swal.fire(" زر نزن بابا");
+	}
 }
 
 function Register(){

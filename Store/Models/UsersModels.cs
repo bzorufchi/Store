@@ -14,6 +14,12 @@ namespace Store.Models
         public int? IsActive { get; set; }
 
     }
+    public class LoginOutput
+    {
+        public int Userid { get; set; }
+        public int RoleId { get; set; }
+        public DateTime ExpTime { get; set; }
+    }
     public class LoginUsers
     {
         public string UserName { get; set; }

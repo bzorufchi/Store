@@ -2,25 +2,25 @@
     var errorCallback = arguments.length <= 5 || arguments[5] === undefined ? "" : arguments[5];
     method = typeof method !== 'undefined' ? method : 'POST';
     param.url = url;
-//     var loaderMessage =  '<img class="img-responsive" src="/assets/images/ajax-loader.gif">' ;
-//     $(param.elementId).css("pointer-events", "none");
-//     $(param.elementId).block({
-//         message: loaderMessage,
-//    overlayCSS: {
-//             backgroundColor: '#ebebeb',
-//             opacity: 0.6,
-//             zIndex: 1200,
-//             cursor: 'wait'
-//         },
-//         css: {
-//             border: 0,
-//             color: '#3f51b5',
-//             padding: 0,
-//             zIndex: 1201,
-//             backgroundColor: 'transparent'
-//         }
-//     });
-    url = 'http://localhost:5208/api/'+ url;
+    //     var loaderMessage =  '<img class="img-responsive" src="/assets/images/ajax-loader.gif">' ;
+    //     $(param.elementId).css("pointer-events", "none");
+    //     $(param.elementId).block({
+    //         message: loaderMessage,
+    //    overlayCSS: {
+    //             backgroundColor: '#ebebeb',
+    //             opacity: 0.6,
+    //             zIndex: 1200,
+    //             cursor: 'wait'
+    //         },
+    //         css: {
+    //             border: 0,
+    //             color: '#3f51b5',
+    //             padding: 0,
+    //             zIndex: 1201,
+    //             backgroundColor: 'transparent'
+    //         }
+    //     });
+    url = 'http://localhost:5208/api/' + url;
     $.ajax({
         type: method,
         data: JSON.stringify(postdata),
@@ -128,7 +128,7 @@ function callAjaxWithPostData(url, postdata, callbackfunc, param, method) {
     param.url = url;
     var loaderMessage = (param.noText)
         ? '<img class="img-responsive" src="/assets/images/ajax-loader.gif">'
-        :'  <div class="container loader"><div class="shape shape-1"></div><div class="shape shape-2"></div><div class="shape shape-3"></div><div class="shape shape-4"></div></div>';
+        : '  <div class="container loader"><div class="shape shape-1"></div><div class="shape shape-2"></div><div class="shape shape-3"></div><div class="shape shape-4"></div></div>';
     $(param.elementId).css("pointer-events", "none");
     $(param.elementId).block({
         message: loaderMessage,
@@ -211,4 +211,26 @@ function callAjaxWithPostData(url, postdata, callbackfunc, param, method) {
             $(param.elementId).css("pointer-events", "unset");
         }
     });
+}
+
+
+function alertS() {
+
+    // Swal.fire({
+    //   title: "از ثبت نظرات خود مطمئنید؟",
+    //   icon: "question",
+    //   iconHtml: "؟",
+    //   confirmButtonText: "بله",
+    //   cancelButtonText: "یخ",
+    //   showCancelButton: true,
+    //   showCloseButton: true
+    // }).then((result) => {
+    //     if (result.isConfirmed) {
+    //       Swal.fire({
+    //         title: "نتیجه!",
+    //         text: "نظر شما محترم!",
+    //         icon: "success"
+    //       });
+    //     }
+    //   });
 }

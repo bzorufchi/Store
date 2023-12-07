@@ -5,50 +5,156 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Store</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Store.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/global.css" asp-append-version="true" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <link rel="stylesheet" href="~/css/global.css" />
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="/css/firstpage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body dir="">
-    <header>
-        
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Store</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="User">User</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SignUp">SignUp</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+<body dir="rtl">
+    <div class="d-flex header">
+        <div class="ax">
+            <img src="../wwwroot/img/christmas_2012_new_6456_prev_ui.png">
+        </div>
+        <div class="menu">
+            <a href="#">صفحه اصلی</a>
+            <a href="#">دسته بندی ها</a>
+            <a href="#">مشاهده محصولات برتر</a>
+            <a href="#">خدمات ما</a>
+            <a href="#">درباره ما</a>
+        </div>
+        <div class="d-flex submit pt-4 pe-5">
+            <a class="" asp-area="" asp-controller="Home" asp-action="SignUp">ورود / ثبت نام</a>
+            <a class="" href="#">سبد خرید<img class="me-2" width="20" height="20" src="https://img.icons8.com/fluency/48/shopping-bag.png" alt="shopping-bag" /></a>
+        </div>
+    </div>
     <div class="">
         <main >
             @RenderBody()
         </main>
     </div>
 
-    <footer>
-       <h1>
 
-       </h1>
-    </footer>
+     <footer class="text-center text-lg-start text-white"
+                style="background-color:#0b274e">
+            <!-- Grid container -->
+            <div class="container p-4 pb-0">
+                <!-- Section: Links -->
+                <section class="">
+                    <!--Grid row-->
+                    <div class="row">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3" style="text-align: right;text-align: justify;line-height: 30px;">
+                            <h6 class="text-uppercase mb-4 font-weight-bold">
+                                فروشگاه بهاره
+                            </h6>
+                            <p>
+                                فروشگاه بهاره بهترین محصولات آرایشی بهداشتی، محصولات پوستی را عرضه می نماید. ما در تلاشیم محصولات را با قیمتی مناسب و در کمترین زمان به مشتریان گرامی برسانیم .
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <hr class="w-100 clearfix d-md-none" />
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3" style="text-align: right;">
+                            <h6 class="text-uppercase mb-4 font-weight-bold">دسترسی سریع</h6>
+                            <p>
+                                <a class="text-white">صفحه اصلی</a>
+                            </p>
+                            <p>
+                                <a class="text-white">مشاهده محصولات</a>
+                            </p>
+                            <p>
+                                <a class="text-white">دسته بندی ها</a>
+                            </p>
+                            <p>
+                                <a class="text-white">درباره ما</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <hr class="w-100 clearfix d-md-none" />
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3" style="text-align: right;">
+                            <img src="./wwwroot/img/ENAMADpng.parspng.com_.png" style="background-color: white;border-radius: 5px;">
+                        </div>
+
+                        <!-- Grid column -->
+                        <hr class="w-100 clearfix d-md-none" />
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3" style="text-align: right;">
+                            <h6 class=" mb-4 font-weight-bold">ارتباط با ما</h6>
+                            <p><i class="fas fa-home ms-2"></i>تهران</p>
+                            <p><i class="fas fa-envelope ms-2"></i>b.zorufchi@gmail.com</p>
+                            <p><i class="fas fa-phone ms-2 "></i>09102224296</p>
+
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!--Grid row-->
+                </section>
+                <!-- Section: Links -->
+                <hr class="my-3">
+                <!-- Section: Copyright -->
+                <section class="p-3 pt-0">
+                    <div class="row d-flex align-items-center" style="text-align: right;">
+                        <!-- Grid column -->
+                        <!-- Grid column -->
+                        <!-- Grid column -->
+                        <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end" style="text-align: right;">
+                            <!-- Facebook -->
+                            <a class="btn btn-outline-light btn-floating m-1"
+                               class="text-white"
+                               role="button">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+
+                            <!-- Twitter -->
+                            <a class="btn btn-outline-light btn-floating m-1"
+                               class="text-white"
+                               role="button">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+
+                            <!-- Google -->
+                            <a class="btn btn-outline-light btn-floating m-1"
+                               class="text-white"
+                               role="button">
+                                <i class="fab fa-google"></i>
+                            </a>
+
+                            <!-- Instagram -->
+                            <a class="btn btn-outline-light btn-floating m-1"
+                               class="text-white"
+                               role="button">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+
+        </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/helpers/ajax.js"></script>
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

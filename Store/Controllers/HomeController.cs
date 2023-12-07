@@ -55,7 +55,12 @@ namespace Store.Controllers
         {
             return View();
         }
-
+        [Route("SingleProduct/{ProductId}")]
+        public IActionResult SingleProduct(int ProductId)
+        {
+            ViewBag.ProductId = ProductId;
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

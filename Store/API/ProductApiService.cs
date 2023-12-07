@@ -323,9 +323,9 @@ namespace Store.API
         }
         
         [HttpPost("GetShowSingleProducts")]
-        public List<GetShowSingleProducts> GetShowSingleProducts([FromBody]int count)
+        public GetShowSingleProducts GetShowSingleProducts([FromBody]int count)
         {
-            List<GetShowSingleProducts> list = new List<GetShowSingleProducts>();
+            GetShowSingleProducts product = new GetShowSingleProducts();
             using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
             using (SqlCommand cmd = new SqlCommand("dbo.sp_GetShowSingleProduct", conn))
             {
@@ -335,7 +335,7 @@ namespace Store.API
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    list.Add(new GetShowSingleProducts()
+                    product=new GetShowSingleProducts()
                     {
                         BrandId = Convert.ToInt32(reader["BrandId"]),
                         CountryId= Convert.ToInt32(reader["CountryId"]),
@@ -350,12 +350,12 @@ namespace Store.API
                         
                         DiscountPrice = Convert.ToInt32(reader["DiscountPrice"]),
                         IsActive = Convert.ToInt32(reader["IsActive"])
-                    });
+                    };
                 }
                 conn.Close();
 
             }
-            return list;
+            return product ;
 
 
         }

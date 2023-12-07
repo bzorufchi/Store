@@ -50,27 +50,37 @@ namespace Store.API
         }
 
         [HttpPost("Login")]
-        public bool Login(LoginUsers input)
+        public LoginOutput Login(LoginUsers input)
         {
+            LoginOutput output = new LoginOutput();
             try
             {
-                var user=context.User.Where(u=>u.UserName==input.UserName).First();
-                if (user==null)
+                var user = context.User.Where(u => u.UserName == input.UserName).First();
+                if (user == null)
                 {
-                    return false;
+                    output.Userid = 0;
+                    output.RoleId = 0;
+                    output.ExpTime = DateTime.Now;
+                    return output;
                 }
                 else
-                    return true;
+                output.Userid = user.Id;
+                output.RoleId = user.RoleId;
+                output.ExpTime = DateTime.Now.AddMinutes(3);
+                return output;
             }
             catch
             {
-                return false;
+                output.Userid = 0;
+                output.RoleId = 0;
+                output.ExpTime = DateTime.Now;
+                return output;
             }
         }
 
         [HttpPost("AddUser")]
         public bool AddUser(AddUserInput input)
-        {
+         {
             try
             {
                 context.User.Add(new User()

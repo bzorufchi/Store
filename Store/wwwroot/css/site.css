@@ -1,3 +1,8 @@
-body{
-   
+body {
+    font-family: 'Iran' !important;
+
+}
+@font-face {
+    font-family: 'Iran';
+    src: url(../wwwroot/fonts/woff/IRANSansWeb_Medium.woff);
 }
