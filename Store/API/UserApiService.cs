@@ -69,7 +69,7 @@ namespace Store.API
                 output.ExpTime = DateTime.Now.AddMinutes(3);
                 return output;
             }
-            catch
+            catch 
             {
                 output.Userid = 0;
                 output.RoleId = 0;
