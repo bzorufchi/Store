@@ -31,7 +31,7 @@ function AfterLogin(param) {
 		location.replace('/');
 	}
 	else {
-		Swal.fire(" زر نزن بابا");
+		Swal.fire("ورود نامعتبر");
 	}
 }
 
