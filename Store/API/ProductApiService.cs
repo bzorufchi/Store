@@ -302,7 +302,7 @@ namespace Store.API
             {
                 conn.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("", count));
+                cmd.Parameters.Add(new SqlParameter("@count", count));
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -312,7 +312,7 @@ namespace Store.API
                         Id = Convert.ToInt32(reader["Id"]),
                         ImageURL = (reader["ImageURL"]).ToString(),
                         OrginalPrice = Convert.ToInt32(reader["OrginalPrice"]),
-                        ProductDescription = (reader["ProductDescription"]).ToString(),
+                        //ProductDescription = (reader["ProductDescription"]).ToString(),
                         ProductName = (reader["ProductName"]).ToString()
                     });
                 }
