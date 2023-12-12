@@ -2,7 +2,7 @@
     ViewData["Title"] = "Product page";
 }
 
-
+@*
 <div class="d-flex mb-5" id="singleproduct" style="width: 100%;justify-content: center;">
 </div>
 <div class="comments mt-xl-4" id="comments">
@@ -10,4 +10,206 @@
 
 @section Scripts {
    <script src="/js/product & comments.js"></script>
+}*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="~/css/productinfo.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="~/css/site.css"/>
+    <link rel="stylesheet" href="~/Store.styles.css"/>
+    <link rel="stylesheet" href="~/global.css"/>
+    <link rel="stylesheet" href="~/site.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="~/css/firstpage.css">
+    <link rel="stylesheet" href="~/css/firstpage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+       
+   font-face{
+        font-family: 'Iran';
+        src: url(../wwwroot/fonts/woff/IRANSansWeb_Medium.woff);
+      }
+*{
+  direction: rtl;
+  padding: 0%;
+  margin: 0% ;
+  font-family: 'Iran';
 }
+a{
+  text-decoration: none !important;
+}
+    </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light" style="height: 10vh;">
+    <div class="container-fluid">
+      <img class="me-4" width="45" height="45" src="https://img.icons8.com/external-smashingstocks-thin-outline-color-smashing-stocks/100/external-Store-ecommerce-and-delivery-smashingstocks-thin-outline-color-smashing-stocks.png" alt="external-Store-ecommerce-and-delivery-smashingstocks-thin-outline-color-smashing-stocks"/>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div  class="collapse navbar-collapse menu" id="navbarSupportedContent">
+      <a href="#">صفحه اصلی</a>
+      <a href="#">مشاهده محصولات برتر</a>
+      <a href="#"> دسته بندی محصولات</a>
+      <a href="#">خدمات ما</a>
+      <a href="#">درباره ما</a>
+      <a href="#">تماس با ما</a>
+        <form class="d-flex me-lg-5" style="width: 30%;">
+          <input class="me-2 " type="search" placeholder="جستجو کنید..." 
+          aria-label="Search" style="width:130%;height: 5vh;background-color: rgba(200, 200, 200, 0.61);padding: 5px;border-radius: 5px;border-style: none;">
+          <a href="#" class="" style="text-decoration: none;
+          background-color: blueviolet;color: white;
+          display: block;padding-right: 20px;padding-left: 20px;padding-top: 8px !important;border-radius: 5px;font-size:13px;">جستجو</a>
+        </form>
+        <div class="d-flex">
+          <a href="#" class="" style="text-decoration: none;
+          background-color: rgb(56, 122, 255);color: white;
+          display: block;padding-right: 15px;padding-left: 15px;padding-top: 10px;border-radius: 5px;font-size:12px;">ورود / ثبت نام</a>
+
+<a href="#" class="" style="text-decoration: none;
+background-color: rgb(255, 255, 255);color: rgb(0, 0, 0);
+display: block;padding-right: 15px;padding-left: 15px;padding-top: 4px;border-radius: 5px;font-size:12px;border-style: solid ;border-width: 2px;border-color: blue;">سبد خرید<img class="me-1 mb-1" width="25" height="25" src="https://img.icons8.com/ios/50/7950F2/shopify.png" alt="shopify"/></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+   <!-- /*header*/ -->
+<div class="d-flex pb-5" id="singleproduct" style="width: 100%;justify-content: center;background-color: #F9F3DF;">
+   
+
+</div>
+<div class="comments" id="comments" style="margin-top: 3%;">
+ 
+
+</div>
+<div class="">
+  <!-- Footer -->
+  <footer
+          class="text-center text-lg-start text-white"
+          style="background-color:#7071E8"
+          >
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Links -->
+      <section class="">
+        <!--Grid row-->
+        <div class="row">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3" style="text-align: right;text-align: justify;line-height: 30px;">
+            <h6 class="text-uppercase mb-4 font-weight-bold">
+             فروشگاه بهاره
+            </h6>
+            <p>
+             فروشگاه بهاره بهترین محصولات آرایشی بهداشتی، محصولات پوستی را عرضه می نماید. ما در تلاشیم محصولات را با قیمتی مناسب و در کمترین زمان به مشتریان گرامی برسانیم .
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3"  style="text-align: right;">
+            <h6 class="text-uppercase mb-4 font-weight-bold">دسترسی سریع</h6>
+            <p>
+              <a href="#" class="text-white">صفحه اصلی</a>
+            </p>
+            <p>
+              <a href="#" class="text-white">مشاهده محصولات</a>
+            </p>
+            <p>
+                <a href="#" class="text-white">دسته بندی ها</a>
+              </p>
+              <p>
+                <a href="#" class="text-white">درباره ما</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3" style="text-align: right;">
+            <img src="../wwwroot/img/ENAMADpng.parspng.com_.png" style="background-color: white;border-radius: 5px;">
+          </div>
+
+          <!-- Grid column -->
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3" style="text-align: right;">
+            <h6 class=" mb-4 font-weight-bold">ارتباط با ما</h6>
+            <p><i class="fas fa-home ms-2"></i>تهران</p>
+            <p><i class="fas fa-envelope ms-2"></i>b.zorufchi@gmail.com</p>
+            <p><i class="fas fa-phone ms-2 "></i>09102224296</p>
+            
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!--Grid row-->
+      </section>
+      <!-- Section: Links -->
+      <hr class="my-3">
+      <!-- Section: Copyright -->
+      <section class="p-3 pt-0">
+        <div class="row d-flex align-items-center" style="text-align: right;">
+          <!-- Grid column -->
+         
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end"style="text-align: right;">
+            <!-- Facebook -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               class="text-white"
+               role="button"
+               ><i class="fab fa-facebook-f"></i
+              ></a>
+
+            <!-- Twitter -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               class="text-white"
+               role="button"
+               ><i class="fab fa-twitter"></i
+              ></a>
+
+            <!-- Google -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               class="text-white"
+               role="button"
+               ><i class="fab fa-google"></i
+              ></a>
+
+            <!-- Instagram -->
+            <a
+               class="btn btn-outline-light btn-floating m-1"
+               class="text-white"
+               role="button"
+               ><i class="fab fa-instagram"></i
+              ></a>
+          </div>
+  
+        </div>
+      </section>
+
+    </div>
+
+  </footer>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/js/product&comments.js"></script>
+  <script src="~/js/helpers/ajax.js"></script>
+</body>
+</html>
