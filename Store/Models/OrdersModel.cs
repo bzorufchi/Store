@@ -40,4 +40,11 @@ namespace Store.Models
     public class DeleteOrders { 
     public int Id { get; set; }
     }
+
+    public class InsertShoppingCart
+    {
+       
+        public int ProductId { get; set; }
+        public int UserId { get; set; }
+    }
 }

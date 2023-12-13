@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Store.Entitis;
 using Store.Models;
+using System.Data;
 using System.Diagnostics.Eventing.Reader;
 
 namespace Store.API
@@ -147,6 +149,43 @@ namespace Store.API
             }
             
             
+        }
+        [HttpPost("InsertOrderToShppoingCard")]
+		public bool InsertOrderToShppoingCard (InsertShoppingCart input)
+		{
+            try
+            {
+                int result = 0;
+                using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+                using (SqlCommand cmd = new SqlCommand("dbo.sp_InsertShoppingCard", conn))
+                {
+                    conn.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@ProductId", input.ProductId));
+                    cmd.Parameters.Add(new SqlParameter("@UserId", input.UserId));
+
+                    var outPut = cmd.ExecuteScalar();
+
+                    result = Convert.ToInt32(outPut);
+  
+                    conn.Close();
+
+                }
+                //if (result == 1)
+                //{
+                //    return true;
+                //}
+                //return false;
+
+                return result == 1 ? true : false;
+
+                //return result == 1;
+
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

@@ -111,6 +111,7 @@ function GetShowSingleProduct(count) {
 	}
 	callAjax('Product/GetShowSingleProducts', count, afterShowSingleProduct, param, 'post')
 }
+var productName = "";
 function afterShowSingleProduct(param) {
 	var resultp = "";
 
@@ -128,11 +129,14 @@ function afterShowSingleProduct(param) {
 				<p style="font-size:13px;">موجود :${param.serverResponse.isActive} </p>
 				<p style="font-size:13px;">تعداد : ${param.serverResponse.count}</p>
 				<p  style="font-size:13px;"class="mb-5">پسندیده شده: ${param.serverResponse.Like}</p>
-				<a href="" class=" text-white pt-2 pb-2 ps-4 pe-4  rounded rounded-2" style="font-size:12px;background-color: #FF414D;"><img class="ms-2" width="20" height="20"  src="https://img.icons8.com/ios-filled/50/FFFFFF/plus.png" alt="plus"/>افزودن به سبد خرید</a>
+				<a  onclick="InsertShoppingCard(${productid})" class=" text-white pt-2 pb-2 ps-4 pe-4  rounded rounded-2" style="font-size:12px;background-color: #FF414D;
+				"><img class="ms-2" width="20" height="20"  
+				src="https://img.icons8.com/ios-filled/50/FFFFFF/plus.png"  alt="plus"/>افزودن به سبد خرید</a>
 			</div>`
-
+	productName = param.serverResponse.productName;
 	document.getElementById('singleproduct').innerHTML = resultp
 }
+
 function GetProductComments(ProductId) {
 	var param = {
 
@@ -182,7 +186,34 @@ function afterGetProductComments(param) {
 `
 	document.getElementById('comments').innerHTML = Comments
 }
+function InsertShoppingCard(productId) {
 
+	var param = {
+
+	}
+	var input = {
+		ProductId: productId,
+		UserId: 4
+	}
+	callAjax("Orders/InsertOrderToShppoingCard", input, afterInsertShoppingCard, param, "POST")
+}
+function afterInsertShoppingCard(param) {
+	console.log(param);
+	//if (param.serverResponse == true) {
+	//	swal.fire("محصول با موفقیت به سبد خرید شما اضافه شد.");
+	//}
+	//else {
+	//	swal.fire("محصول به سبد خرید اضافه نشد!مجدد تلاش کنید.");
+
+	//}
+	if (param.serverResponse == true) {
+		swal.fire(` ${productName} با موفقیت به سبد خرید شما اضافه شد.`);
+	}
+	else {
+		swal.fire("محصول به سبد خرید اضافه نشد!مجدد تلاش کنید.");
+	}
+
+}
 function addcomment() {
 	var comment = document.getElementById('text').value
 	var param = {
