@@ -1,4 +1,29 @@
 ﻿body {
-    font-family: 'Iran';
-    src: url(/fonts/woff/IRANSansWeb_Medium.woff);
+    font-family: 'B Nazanin';
+
+
+}
+a {
+    font-family: 'B Nazanin';
+}
+h1 {
+    font-family: 'B Nazanin';
+}
+h2 {
+    font-family: 'B Nazanin';
+}
+h3 {
+    font-family: 'B Nazanin';
+}
+h4 {
+    font-family: 'B Nazanin';
+}
+h5 {
+    font-family: 'B Nazanin';
+}
+h6 {
+    font-family: 'B Nazanin';
+}
+p {
+    font-family: 'B Nazanin';
 }

@@ -18,24 +18,78 @@
     <link rel="stylesheet" href="~/css/site.css">
     <link rel="stylesheet" href="/css/firstpage.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <style>
+        body {
+            font-family: 'B Nazanin';
+        }
+
+        a {
+            font-family: 'B Nazanin';
+        }
+
+        h1 {
+            font-family: 'B Nazanin';
+        }
+
+        h2 {
+            font-family: 'B Nazanin';
+        }
+
+        h3 {
+            font-family: 'B Nazanin';
+        }
+
+        h4 {
+            font-family: 'B Nazanin';
+        }
+
+        h5 {
+            font-family: 'B Nazanin';
+        }
+
+        h6 {
+            font-family: 'B Nazanin';
+        }
+
+        p {
+            font-family: 'B Nazanin';
+        }
+     </style>
 </head>
-<body dir="rtl">
-@*    <div class="d-flex header">
-        <div class="ax">
-            <img src="../wwwroot/img/christmas_2012_new_6456_prev_ui.png">
+<body >
+    <nav class="navbar navbar-expand-lg navbar-light" style="height: 10vh;">
+        <div class="container-fluid">
+            <img class="me-4" width="45" height="45" src="https://img.icons8.com/external-smashingstocks-thin-outline-color-smashing-stocks/100/external-Store-ecommerce-and-delivery-smashingstocks-thin-outline-color-smashing-stocks.png" alt="external-Store-ecommerce-and-delivery-smashingstocks-thin-outline-color-smashing-stocks" />
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse menu" id="navbarSupportedContent">
+                <a asp-area="" asp-controller="Home" asp-action="Index">صفحه اصلی</a>
+                <a asp-area="" asp-controller="Home" asp-action="GetShowProductLike">مشاهده محصولات برتر</a>
+                <a asp-area="" asp-controller="Home" asp-action="category"> دسته بندی محصولات</a>
+                <a asp-area="" asp-controller="Home" asp-action="ourservices">خدمات ما</a>
+                <a asp-area="" asp-controller="Home" asp-action="aboutus">درباره ما</a>
+                <a asp-area="" asp-controller="Home" asp-action="contactus">تماس با ما</a>
+                <form class="d-flex me-lg-5" style="width: 30%;">
+                    <input class="me-2 " type="search" placeholder="جستجو کنید..."
+                           aria-label="Search" style="width:130%;height: 5vh;background-color: rgba(200, 200, 200, 0.61);padding: 5px;border-radius: 5px;border-style: none;">
+                    <a href="#" class="" style="text-decoration: none;
+          background-color: blueviolet;color: white;
+          display: block;padding-right: 20px;padding-left: 20px;padding-top: 8px !important;border-radius: 5px;font-size:13px;">جستجو</a>
+                </form>
+                <div class="d-flex">
+                    <a asp-area="" asp-controller="Home" asp-action="SignUp" class="" style="text-decoration: none;
+          background-color: rgb(56, 122, 255);color: white;
+          display: block;padding-right: 15px;padding-left: 15px;padding-top: 10px;border-radius: 5px;font-size:12px;">ورود / ثبت نام</a>
+
+                    <a href="#" class="" style="text-decoration: none;
+background-color: rgb(255, 255, 255);color: rgb(0, 0, 0);
+display: block;padding-right: 15px;padding-left: 15px;padding-top: 4px;border-radius: 5px;font-size:12px;border-style: solid ;border-width: 2px;border-color: blue;">سبد خرید<img class="me-1 mb-1" width="25" height="25" src="https://img.icons8.com/ios/50/7950F2/shopify.png" alt="shopify" /></a>
+                </div>
+            </div>
         </div>
-        <div class="menu">
-            <a href="#">صفحه اصلی</a>
-            <a href="#">دسته بندی ها</a>
-            <a href="#">مشاهده محصولات برتر</a>
-            <a href="#">خدمات ما</a>
-            <a href="#">درباره ما</a>
-        </div>
-        <div class="d-flex submit pt-4 pe-5">
-            <a class="" asp-area="" asp-controller="Home" asp-action="SignUp">ورود / ثبت نام</a>
-            <a class="" href="#">سبد خرید<img class="me-2" width="20" height="20" src="https://img.icons8.com/fluency/48/shopping-bag.png" alt="shopping-bag" /></a>
-        </div>
-    </div>*@
+    </nav>
+    <!-- /*header*/ -->
     <div class="">
         <main >
             @RenderBody()
@@ -43,8 +97,12 @@
     </div>
 
 
-    @* <foote class="text-center text-lg-start text-white"
-                style="background-color:#0b274e">
+
+    <!--footer-->
+    <div class="">
+        <!-- Footer -->
+        <footer class="text-center text-lg-start text-white"
+                style="background-color:#7071E8">
             <!-- Grid container -->
             <div class="container p-4 pb-0">
                 <!-- Section: Links -->
@@ -68,16 +126,16 @@
                         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3" style="text-align: right;">
                             <h6 class="text-uppercase mb-4 font-weight-bold">دسترسی سریع</h6>
                             <p>
-                                <a class="text-white">صفحه اصلی</a>
+                                <a href="#" class="text-white">صفحه اصلی</a>
                             </p>
                             <p>
-                                <a class="text-white">مشاهده محصولات</a>
+                                <a href="#" class="text-white">مشاهده محصولات</a>
                             </p>
                             <p>
-                                <a class="text-white">دسته بندی ها</a>
+                                <a href="#" class="text-white">دسته بندی ها</a>
                             </p>
                             <p>
-                                <a class="text-white">درباره ما</a>
+                                <a href="#" class="text-white">درباره ما</a>
                             </p>
                         </div>
                         <!-- Grid column -->
@@ -86,7 +144,7 @@
 
                         <!-- Grid column -->
                         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3" style="text-align: right;">
-                            <img src="./wwwroot/img/ENAMADpng.parspng.com_.png" style="background-color: white;border-radius: 5px;">
+                            <img src="/img/ENAMADpng.parspng.com_.png" style="background-color: white;border-radius: 5px;">
                         </div>
 
                         <!-- Grid column -->
@@ -114,31 +172,31 @@
                         <!-- Grid column -->
                         <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end" style="text-align: right;">
                             <!-- Facebook -->
-                            <a class="btn btn-outline-light btn-floating m-1"
-                               class="text-white"
+                            <a class="btn m-1"
+                               class=""
                                role="button">
-                                <i class="fab fa-facebook-f"></i>
+                                <img width="32" height="32" src="https://img.icons8.com/glyph-neue/64/FFFFFF/instagram-new--v1.png" alt="instagram-new--v1" />
                             </a>
 
                             <!-- Twitter -->
-                            <a class="btn btn-outline-light btn-floating m-1"
-                               class="text-white"
+                            <a class="btn m-1"
+                               class=""
                                role="button">
-                                <i class="fab fa-twitter"></i>
+                                <img width="32" height="32" src="https://img.icons8.com/external-yogi-aprelliyanto-glyph-yogi-aprelliyanto/32/FFFFFF/external-paper-plane-design-thinking-yogi-aprelliyanto-glyph-yogi-aprelliyanto.png" alt="external-paper-plane-design-thinking-yogi-aprelliyanto-glyph-yogi-aprelliyanto" />
                             </a>
 
                             <!-- Google -->
-                            <a class="btn btn-outline-light btn-floating m-1"
-                               class="text-white"
+                            <a class="btn  m-1"
+                               class=""
                                role="button">
-                                <i class="fab fa-google"></i>
+                                <img width="32" height="32" src="https://img.icons8.com/glyph-neue/64/FFFFFF/twitter.png" alt="twitter" />
                             </a>
 
                             <!-- Instagram -->
-                            <a class="btn btn-outline-light btn-floating m-1"
-                               class="text-white"
+                            <a class="btn  m-1"
+                               class=""
                                role="button">
-                                <i class="fab fa-instagram"></i>
+                                <img width="32" height="32" src="https://img.icons8.com/ios-filled/50/FFFFFF/google-logo.png" alt="google-logo" />
                             </a>
                         </div>
 
@@ -147,7 +205,9 @@
 
             </div>
 
-        </foote>*@
+        </footer>
+
+    </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
