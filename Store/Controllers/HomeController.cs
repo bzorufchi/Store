@@ -55,6 +55,42 @@ namespace Store.Controllers
         {
             return View();
         }
+        public IActionResult viewProduct()
+        {
+            return View();
+        }
+        public IActionResult aboutus()
+        {
+            return View();
+        }
+        public IActionResult contactus()
+        {
+            return View();
+        }
+        public IActionResult ourservices()
+        {
+            return View();
+        }
+        public IActionResult category()
+        {
+            return View();
+        }
+        public IActionResult Cart()
+        {
+            return View();
+        }
+        public IActionResult GetShowProductLike()
+        {
+            return View();
+        }
+        [Route("search/{str}")]
+        public IActionResult search(string str)
+        {
+            ProductApiService p = new ProductApiService(context);
+            ViewBag.search= p.searchProductsByStr(str) ;
+
+            return View();
+        }
         [Route("SingleProduct/{ProductId}")]
         public IActionResult SingleProduct(int ProductId)
         {

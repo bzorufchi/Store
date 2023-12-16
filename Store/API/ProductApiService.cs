@@ -321,7 +321,36 @@ namespace Store.API
             }
             return list;
         }
-        
+
+        [HttpPost("searchProductsByStr")]
+        public List<GetShowAllProductsOutput> searchProductsByStr([FromBody] string Str)
+        {
+            List<GetShowAllProductsOutput> list = new List<GetShowAllProductsOutput>();
+            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlCommand cmd = new SqlCommand("dbo.sp_searchProductsByStr", conn))
+            {
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@str", Str));
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    list.Add(new GetShowAllProductsOutput()
+                    {
+                        Count = Convert.ToInt32(reader["Count"]),
+                        Id = Convert.ToInt32(reader["Id"]),
+                        ImageURL = (reader["ImageURL"]).ToString(),
+                        OrginalPrice = Convert.ToInt32(reader["OrginalPrice"]),
+                        //ProductDescription = (reader["ProductDescription"]).ToString(),
+                        ProductName = (reader["ProductName"]).ToString()
+                    });
+                }
+                conn.Close();
+
+            }
+            return list;
+        }
+
         [HttpPost("GetShowSingleProducts")]
         public GetShowSingleProducts GetShowSingleProducts([FromBody]int count)
         {

@@ -1,0 +1,7 @@
+body {margin:2em;}
+tfoot tr, thead tr {
+	background: lightblue;
+}
+tfoot td {
+	font-weight:bold;
+}
