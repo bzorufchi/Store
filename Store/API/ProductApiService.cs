@@ -162,27 +162,38 @@ namespace Store.API
             }
         }
         [HttpPost("Delete")]
-        public string Delete(DeleteProduct input)
+       
+        public int  Delete(DeleteProduct  count)
         {
-            if (input.Id == 0)
+            try
             {
-                throw new Exception("");
+                using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+                using (SqlCommand cmd = new SqlCommand("dbo.sp_DeleteProduct", conn))
+                {
+                    conn.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@Id", count.Id));
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var r =  Convert.ToInt32(reader["r"]);
+                    }
+                    conn.Close();
+
+                }
+                return 1;
             }
-            else
+            catch (Exception)
             {
-                var product = context.Product.Where(p => p.Id == input.Id).FirstOrDefault();
-                if (product == null)
-                {
-                    throw new Exception("");
-                }
-                else
-                {
-                    product.IsActive = 0;
-                    context.SaveChanges();
-                    return "محصول با موفقیت غیر فعال شد";
-                }
+
+                return 0;
             }
+        
+
+
         }
+
+
         [HttpPost("DeleteProduct")]
         public string DeleteProduct(DeleteProduct input)
         {
@@ -295,6 +306,34 @@ namespace Store.API
         }
         [HttpPost("GetShowAllProducts")]
         public List<GetShowAllProductsOutput> GetShowAllProducts([FromBody] int count)
+        {
+            List<GetShowAllProductsOutput> list = new List<GetShowAllProductsOutput>();
+            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlCommand cmd = new SqlCommand("dbo.sp_GetShowProduct", conn))
+            {
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@count", count));
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    list.Add(new GetShowAllProductsOutput()
+                    {
+                        Count = Convert.ToInt32(reader["Count"]),
+                        Id = Convert.ToInt32(reader["Id"]),
+                        ImageURL = (reader["ImageURL"]).ToString(),
+                        OrginalPrice = Convert.ToInt32(reader["OrginalPrice"]),
+                        //ProductDescription = (reader["ProductDescription"]).ToString(),
+                        ProductName = (reader["ProductName"]).ToString()
+                    });
+                }
+                conn.Close();
+
+            }
+            return list;
+        }
+        [HttpPost("ProductAdminPanel")]
+        public List<GetShowAllProductsOutput> ProductAdminPanel([FromBody] int count)
         {
             List<GetShowAllProductsOutput> list = new List<GetShowAllProductsOutput>();
             using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))

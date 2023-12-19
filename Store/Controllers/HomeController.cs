@@ -83,6 +83,10 @@ namespace Store.Controllers
         {
             return View();
         }
+        public IActionResult ProductAdminPanel()
+        {
+            return View();
+        }
         [Route("search/{str}")]
         public IActionResult search(string str)
         {

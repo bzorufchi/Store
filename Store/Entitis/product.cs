@@ -17,8 +17,7 @@
         public float discountpercent { get; set;}
         public DateTime CreationDate { get; set;}
 
-        public Orders Orders { get; set; }
-        public Brands Brands { get; set; }
+        public Brands Brand { get; set; }
         public ICollection<Comments> Comments { get; set; }
 
         public Category Category { get; set; }

@@ -74,4 +74,9 @@ namespace Store.Models
 		
 
 	}
+
+    public class GetUserFullName
+    {
+       public int Id { get; set; }
+    }
 }

@@ -266,5 +266,13 @@ namespace Store.API
                 return true;
             }
         }
+
+        [HttpPost("GetUserFullName")]
+        public string GetUserFullName(GetUserFullName  input)
+        {
+            var fullName=context.User.Where(u=>u.Id==input.Id).Select(u=> u.FirstName + " " + u.FamilyName)
+            .FirstOrDefault()!;
+            return fullName;
+        }
     }
 }

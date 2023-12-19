@@ -32,6 +32,7 @@
         async: true,
         error: function (jqXHR, textStatus, errorThrown) {
             if (jqXHR.responseJSON != null && jqXHR.responseJSON.Type != null) {
+                Swal.fire(jqXHR.responseJSON.Title);
                 // new PNotify({
                 //     title: jqXHR.responseJSON.Title,
                 //     text: jqXHR.responseJSON.Message,
@@ -55,6 +56,7 @@
                 // });
             }
             else {
+                Swal.fire(jqXHR.responseJSON.Title);
                 // new PNotify({
                 //     title: "خطا",
                 //     text: errorThrown,
