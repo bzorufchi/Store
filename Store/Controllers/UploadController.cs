@@ -8,7 +8,7 @@ namespace Store.Controllers
         [HttpPost]
         public string UploadFiles([FromForm]IFormFile file)
         {
-            using var stream =  file.OpenReadStream();
+            using var stream =  file.OpenReadStream(); 
             var destination = $"{Directory.GetCurrentDirectory()}\\wwwroot\\axstore\\{file.FileName}";
             using(var writer = new FileStream(destination,FileMode.OpenOrCreate))
             {
