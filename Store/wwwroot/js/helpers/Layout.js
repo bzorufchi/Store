@@ -8,6 +8,9 @@
         document.getElementById('login').style.display = 'none'
         document.getElementById('login2').style.display = 'none'
         document.getElementById("adminpanel").style.display = 'none'
+        localStorage.removeItem("roleid");
+        localStorage.removeItem("time");
+        localStorage.removeItem("userid");
     }
     else {
         document.getElementById('logout').style.display = 'none'

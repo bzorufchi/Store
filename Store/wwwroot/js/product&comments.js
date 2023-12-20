@@ -95,10 +95,13 @@
 //}
 
 var productid = 0;
+var userid = 0;
 $(document).ready(
 
 
-function () {
+	function () {
+		userid = parseInt(localStorage.getItem("userid"));
+		if (isNaN(userid) || userid == undefined) {userid=0 }
 	productid = parseInt(window.location.pathname.split('/')[2])
 		GetShowSingleProduct(productid)
 		GetProductComments(productid)
@@ -158,20 +161,7 @@ function afterGetProductComments(param) {
 		<h6 class="mt-3 me-4" style="color: #45526e;">نام کاربری :${param.serverResponse[i].username}  </h6>
 		<p class="mt-3 me-4" style="font-size: 13px;">نظر : ${param.serverResponse[i].text}</p>
 	</div>`
-			if (param.serverResponse.userid > 0) {
-				localStorage.setItem('userid', param.serverResponse.userid);
-				// localStorage.setItem('roleid', param.serverResponse.roleId);
-				// localStorage.setItem('time', param.serverResponse.expTime);
-				location.replace('/');
-			}
-			else {
-				Swal.fire("کامنت ثبت نشد");
-			}
-
-
 		}
-
-
 	}
 	Comments += `
 <div>
@@ -188,12 +178,17 @@ function afterGetProductComments(param) {
 }
 function InsertShoppingCard(productId) {
 
+	if (userid < 1) {
+		Swal.fire("لطفا لاگین کنید");
+		return;
+	}
+
 	var param = {
 
 	}
 	var input = {
 		ProductId: productId,
-		UserId: 4
+		UserId: userid
 	}
 	callAjax("Orders/InsertOrderToShppoingCard", input, afterInsertShoppingCard, param, "POST")
 }
@@ -216,13 +211,24 @@ function afterInsertShoppingCard(param) {
 }
 function addcomment() {
 	var comment = document.getElementById('text').value
+
+	if (comment.length < 4) {
+		Swal.fire("متن کامنتی بگذارید");
+		return;
+	}
+
+	if (userid < 1) {
+		Swal.fire("لطفا لاگین کنید");
+		return;
+	}
+
 	var param = {
 
 	}
 	var input = {
 		Text: comment,
-		UserId: 4,
-		ProductId: 4
+		UserId: userid,
+		ProductId: productid
 	}
 	callAjax("Comments/Addcomments", input, afteraddcomments, param, "POST")
 }

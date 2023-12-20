@@ -66,7 +66,7 @@ namespace Store.API
                 else
                 output.Userid = user.Id;
                 output.RoleId = user.RoleId;
-                output.ExpTime = DateTime.Now.AddMinutes(3);
+                output.ExpTime = DateTime.Now.AddHours(1);
                 return output;
             }
             catch 

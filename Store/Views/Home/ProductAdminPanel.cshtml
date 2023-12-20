@@ -6,9 +6,6 @@
     <link rel="stylesheet" href="~/global.css" />
     <link rel="stylesheet" href="~/css/site.css">
     <link rel="stylesheet" href="~/css/ProductAdminPanel.css" asp-append-version="true" />
-
-    Layout = null;
-
 }
 <div>
     <!-- <section class="d-flex" style="background-color: #eee;" id="show"> -->
@@ -21,36 +18,50 @@
     <!-- </section> -->
 
 </div>
-<div class="login">
+<div class="login pb-5">
     <div class="login-triangle"></div>
 
     <h2 class="login-header">Log in</h2>
 
     <form class="login-container">
        <div class="d-flex">
-            <p><input type="text" placeholder="نام محصول"></p>
-            <p><input type="text" placeholder="توضیحات محصول"></p>
+            <p><input id="NameProduct" type="text" placeholder="نام محصول"></p>
+            <p><input id="ProductDes" type="text" placeholder="توضیحات محصول"></p>
        </div>
         <div class="d-flex">
-            <p><input type="text" placeholder="قیمت محصول"></p>
-            <p><input type="text" placeholder="قیمت تخفیف"></p>
-       </div>
-        <div class="d-flex">
-            <p><input type="text" placeholder="کشور"></p>
-            <p><input type="text" placeholder="برند"></p>
-       </div>
-        <div class="d-flex">
-            <p><input type="text" placeholder="کشور"></p>
-            <p><input type="text" placeholder="برند"></p>
-       </div>
-        <div class="d-flex">
-            <p><input type="text" placeholder="دسته بندی محصول"></p>
-            <p><input type="text" placeholder="موجود"></p>
+            <p><input id="orginalPrice" type="text" placeholder="قیمت محصول"></p>
+            <p><input id="DiscountPrice" type="text" placeholder="قیمت تخفیف"></p>
        </div>
        <div>
-            <p><input type="text" placeholder="تعداد"></p>
+            <div class="d-flex">
+                <p>
+                    <select name="Brands" id="Brands">
+                     
+
+                    </select>
+                </p>
+                <p>
+                    <select name="Country" id="Country">
+                       
+
+                    </select>
+                </p>
+            </div>
        </div>
-        <a href="#" class="text-center">اضافه کردن محصول</a>
+        <div class="d-flex">
+            <p>
+                <select name="categoryes" id="categoryes">
+                   
+                    
+                </select>
+            </p>
+            <p><input id="IsActive" type="text" placeholder="موجود"></p>
+       </div>
+        <div class="d-flex">
+            <p><input id="Count" type="text" placeholder="تعداد"></p>
+            <input id="ImageURL" type="file"  name="myfile" multiple>
+       </div>
+        <a onclick="AddProduct()" class="text-center">اضافه کردن محصول</a>
     </form>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

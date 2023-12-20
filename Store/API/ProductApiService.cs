@@ -43,30 +43,125 @@ namespace Store.API
             }).ToList();
             return data;
         }
+
         [HttpPost("AddProduct")]
-        public bool AddProduct(AddProductInput input)
+        public int AddProduct(InsertProduct count)
         {
             try
             {
-                context.Product.Add(new Product()
+                using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+                using (SqlCommand cmd = new SqlCommand("dbo.sp_AddProduct", conn))
                 {
-                    ProductName = input.ProductName,
-                    ProductDescription = input.ProductDescription,
-                    ImageURL = input.ImageURL,
-                    OrginalPrice = input.OrginalPrice,
-                    DiscountPrice = input.DiscountPrice,
-                    IsActive = input.IsActive,
-                    Count = input.Count,
-                    Like = input.Like,
-                    discountpercent = input.discountpercent,
-                });
-                context.SaveChanges();
-                return true;
+                    conn.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    int zero = 0;
+                    cmd.Parameters.Add(new SqlParameter("@BrandId", count.BrandId));
+                    cmd.Parameters.Add(new SqlParameter("@CountryId", count.CountryId));
+                    cmd.Parameters.Add(new SqlParameter("@CategoryId", count.CategoryId));
+                    cmd.Parameters.Add(new SqlParameter("@ProductName", count.ProductName));
+                    cmd.Parameters.Add(new SqlParameter("@ProductDescription", count.ProductDescription));
+                    cmd.Parameters.Add(new SqlParameter("@ImageURL", count.ImageURL));
+                    cmd.Parameters.Add(new SqlParameter("@OrginalPrice", count.OrginalPrice));
+                    cmd.Parameters.Add(new SqlParameter("@DiscountPrice", count.DiscountPrice));
+                    cmd.Parameters.Add(new SqlParameter("@IsActive", count.IsActive));
+                    cmd.Parameters.Add(new SqlParameter("@Count", count.Count));
+                    cmd.Parameters.Add(new SqlParameter("@Like", zero));
+                    cmd.Parameters.Add(new SqlParameter("@discountpercent", zero));
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                    }
+                    conn.Close();
+
+                }
+                return 1;
             }
-            catch (Exception) {
-                return false;
+            catch (Exception)
+            {
+
+                return 0;
             }
+
+
+
         }
+
+        [HttpPost("GetAllCategory")]
+        public List<GetAllCategory> GetAllCategory()
+        {
+            List<GetAllCategory> list = new List<GetAllCategory>();
+            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlCommand cmd = new SqlCommand("dbo.sp_GetAllCategory", conn))
+            {
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    list.Add(new GetAllCategory()
+                    {
+                       
+                        Id = Convert.ToInt32(reader["Id"]),
+                        Name= (reader["Name"]).ToString()
+                    });
+                }
+                conn.Close();
+
+            }
+            return list;
+        }
+
+        [HttpPost("GetAllCountry")]
+        public List<GetAllCountry> GetAllCountry()
+        {
+            List<GetAllCountry> list = new List<GetAllCountry>();
+            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlCommand cmd = new SqlCommand("dbo.sp_GetAllCountry", conn))
+            {
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    list.Add(new GetAllCountry()
+                    {
+
+                        Id = Convert.ToInt32(reader["Id"]),
+                        Name = (reader["Name"]).ToString()
+                    });
+                }
+                conn.Close();
+
+            }
+            return list;
+        }
+
+        [HttpPost("GetAllBrands")]
+        public List<GetAllBrands> GetAllBrands()
+        {
+            List<GetAllBrands> list = new List<GetAllBrands>();
+            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlCommand cmd = new SqlCommand("dbo.sp_GetAllBrands", conn))
+            {
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    list.Add(new GetAllBrands()
+                    {
+
+                        Id = Convert.ToInt32(reader["Id"]),
+                        Name = (reader["Name"]).ToString()
+                    });
+                }
+                conn.Close();
+
+            }
+            return list;
+        }
+
+
         [HttpPost("UpdateProduct")]
 
         public bool UpdateProduct(UpdateProductInput input)
@@ -157,13 +252,14 @@ namespace Store.API
                 context.SaveChanges();
                 return true;
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 return false;
             }
         }
         [HttpPost("Delete")]
-       
-        public int  Delete(DeleteProduct  count)
+
+        public int Delete(DeleteProduct count)
         {
             try
             {
@@ -176,7 +272,7 @@ namespace Store.API
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        var r =  Convert.ToInt32(reader["r"]);
+                        var r = Convert.ToInt32(reader["r"]);
                     }
                     conn.Close();
 
@@ -188,7 +284,7 @@ namespace Store.API
 
                 return 0;
             }
-        
+
 
 
         }
@@ -291,10 +387,10 @@ namespace Store.API
                         DiscountPrice = Convert.ToInt32(reader["DiscountPrice"]),
                         Id = Convert.ToInt32(reader["Id"]),
                         ImageURL = (reader["ImageURL"]).ToString(),
-                        
+
                         Like = Convert.ToInt32(reader["Like"]),
                         OrginalPrice = Convert.ToInt32(reader["OrginalPrice"]),
-                       
+
                         ProductName = (reader["ProductName"]).ToString()
 
                     });
@@ -391,7 +487,7 @@ namespace Store.API
         }
 
         [HttpPost("GetShowSingleProducts")]
-        public GetShowSingleProducts GetShowSingleProducts([FromBody]int count)
+        public GetShowSingleProducts GetShowSingleProducts([FromBody] int count)
         {
             GetShowSingleProducts product = new GetShowSingleProducts();
             using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
@@ -403,19 +499,19 @@ namespace Store.API
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    product=new GetShowSingleProducts()
+                    product = new GetShowSingleProducts()
                     {
                         BrandId = Convert.ToInt32(reader["BrandId"]),
-                        CountryId= Convert.ToInt32(reader["CountryId"]),
-                        CategoryId= Convert.ToInt32(reader["CategoryId"]),
+                        CountryId = Convert.ToInt32(reader["CountryId"]),
+                        CategoryId = Convert.ToInt32(reader["CategoryId"]),
                         Count = Convert.ToInt32(reader["Count"]),
                         ImageURL = (reader["ImageURL"]).ToString(),
                         Id = Convert.ToInt32(reader["Id"]),
-                        Like= Convert.ToInt32(reader["Like"]),
-                        OrginalPrice= Convert.ToInt32(reader["OrginalPrice"]),
+                        Like = Convert.ToInt32(reader["Like"]),
+                        OrginalPrice = Convert.ToInt32(reader["OrginalPrice"]),
                         ProductName = (reader["ProductName"]).ToString(),
                         ProductDescription = (reader["ProductDescription"]).ToString(),
-                        
+
                         DiscountPrice = Convert.ToInt32(reader["DiscountPrice"]),
                         IsActive = Convert.ToInt32(reader["IsActive"])
                     };
@@ -423,14 +519,15 @@ namespace Store.API
                 conn.Close();
 
             }
-            return product ;
+            return product;
 
 
         }
 
 
     }
-   
 }
+   
+
 
 
