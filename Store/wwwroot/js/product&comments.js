@@ -126,12 +126,12 @@ function afterShowSingleProduct(param) {
 				<p style="font-size:13px;">اطلاعات محصول :${param.serverResponse.productDescription} </p>
 				<p style="font-size:13px;">قیمت محصول : ${param.serverResponse.orginalPrice}</p>
 				<p style="font-size:13px;">قیمت تخفیف :${param.serverResponse.discountPrice} </p>
-				<p style="font-size:13px;">کشور :${param.serverResponse.countryId} </p>
-				<p style="font-size:13px;">برند : ${param.serverResponse.brandId}</p>
-				<p style="font-size:13px;">دسته بندی محصول : ${param.serverResponse.categoryId}</p>
+				<p style="font-size:13px;">کشور :${param.serverResponse.countryName} </p>
+				<p style="font-size:13px;">برند : ${param.serverResponse.brandName}</p>
+				<p style="font-size:13px;">دسته بندی محصول : ${param.serverResponse.categoryName}</p>
 				<p style="font-size:13px;">موجود :${param.serverResponse.isActive} </p>
 				<p style="font-size:13px;">تعداد : ${param.serverResponse.count}</p>
-				<p  style="font-size:13px;"class="mb-5">پسندیده شده: ${param.serverResponse.Like}</p>
+				<p  style="font-size:13px;"class="mb-5"><img width="20" height="20" src="https://img.icons8.com/ios-filled/50/FA5252/like--v1.png" alt="like--v1"/> پسندیده شده : ${param.serverResponse.like}</p>
 				<a  onclick="InsertShoppingCard(${productid})" class=" text-white pt-2 pb-2 ps-4 pe-4  rounded rounded-2" style="font-size:12px;background-color: #FF414D;
 				"><img class="ms-2" width="20" height="20"  
 				src="https://img.icons8.com/ios-filled/50/FFFFFF/plus.png"  alt="plus"/>افزودن به سبد خرید</a>
@@ -147,7 +147,7 @@ function GetProductComments(ProductId) {
 	callAjax('Comments/GetProductComments', ProductId, afterGetProductComments, param, 'post')
 }
 function afterGetProductComments(param) {
-	var Comments = ` <h6 class="me-5 mt-5" style="color:#4FB783">نظرات کاربران درباره این محصول</h6>
+	var Comments = ` <h6 class="me-3 mt-5" style="color:#4FB783">نظرات کاربران درباره این محصول</h6>
 `;
 	for (var i = 0; i < param.serverResponse.length; i++) {
 		if (i % 2 == 0) {
@@ -165,7 +165,7 @@ function afterGetProductComments(param) {
 	}
 	Comments += `
 <div>
-    <h5 class="me-4 mt-4" style="color: #7F78D2;">ثبت نظر توسط شما</h5>
+    <h6 class="me-4 mt-4" style="color: #7F78D2;">ثبت نظر توسط شما</h6>
     <!-- <label class="me-3 mt-3">ایمیل</label>
         <input id="emailticket" type="text"  style="width:22%"> -->
     <form action="" class="mt-2 me-3 bg-white pt-3 pb-3">

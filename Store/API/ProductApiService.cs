@@ -501,9 +501,9 @@ namespace Store.API
                 {
                     product = new GetShowSingleProducts()
                     {
-                        BrandId = Convert.ToInt32(reader["BrandId"]),
-                        CountryId = Convert.ToInt32(reader["CountryId"]),
-                        CategoryId = Convert.ToInt32(reader["CategoryId"]),
+                        BrandName = (reader["BrandName"]).ToString(),
+                        CountryName = (reader["CountryName"]).ToString(),
+                        CategoryName = (reader["CategoryName"]).ToString(),
                         Count = Convert.ToInt32(reader["Count"]),
                         ImageURL = (reader["ImageURL"]).ToString(),
                         Id = Convert.ToInt32(reader["Id"]),

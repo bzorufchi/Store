@@ -65,7 +65,7 @@ function aftergetlastproduct(param){
                   <div class="col-3">
                   <div class="card text-black ms-1 text-center pb-3">
                     <img src="/axstore/${param.serverResponse[i].imageURL}"
-                      class="card-img-top" alt="Apple Computer" />
+                      class="card-img-top" alt="Apple Computer" style="width:20%,height:20%" />
                     <div class="card-body">
                       <div class="text-center">
                         <h6 class="card-title mt-2">نام محصول :${param.serverResponse[i].productName} </h6>
@@ -110,7 +110,7 @@ function afterMaxProductLike(param){
       <div class=" col-3">
       <div class="card text-black ms-1 text-center pb-3">
         <img src="/axstore/${param.serverResponse[i].imageURL}"
-          class="card-img-top" alt="Apple Computer" />
+          class="card-img-top" alt="Apple Computer" style="width:20%,height:20%"  />
         <div class="card-body">
           <div class="text-center">
             <h6 class="card-title mt-2">نام محصول :${param.serverResponse[i].productName} </h6>

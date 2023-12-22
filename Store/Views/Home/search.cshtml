@@ -24,21 +24,21 @@
         direction: rtl;
         padding: 0%;
         margin: 0%;
-        font-weight: 900;
-        font-size: 20px;
+        font-weight: 200;
+ 
     }
 
     a {
         text-decoration: none;
-        font-size: 20px;
+        font-size: 15px;
     }
 </style>
 <body>
    
-    <h1>تعداد محصولات پیدا شده:  <p>@ViewBag.search.Count</p></h1>
+    <h4 class="me-4 mt-4">تعداد محصولات پیدا شده : <p class="text-danger mt-3">@ViewBag.search.Count <a class="text-danger" style="font-size:20px">عدد</a></p></h4>
     <div>
         <!-- <section class="d-flex" style="background-color: #eee;" id="show"> -->
-        <div class="container py-5 ">
+        <div class="container  mb-4 me-4">
             <div class="row d-flex " id="search">
                 
                    @foreach (var item in ViewBag.search)

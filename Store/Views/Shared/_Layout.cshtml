@@ -19,14 +19,15 @@
  
 </head>
 <body >
-    <div class="d-flex">
-        <h4 class="text-center" id="fullname"></h4>
-        <a id="login2" onclick="logout()" style="text-decoration: none;background-color: rgb(56, 122, 255);color: white;display: block;padding-right: 15px;padding-left: 15px;padding-top: 10px;border-radius: 5px;font-size:12px;">خروچ</a>
+    <div class="d-flex pt-4" style="width:100%">
+        <p class="text-center mt-2 me-5" id="fullname" style="font-size25px;padding-left:3%"></p>
+        <a class="text-center" href=" #" id="login2" onclick="logout()" style="text-decoration: none;background-color:red;color:white;
+display: block;height:40px;width:70px;border-radius: 5px;font-size:12px;padding-top:10px;padding-bottom10px">خروچ</a>
 
     </div>
-    <nav class="navbar navbar-expand-lg navbar-light" style="height: 10vh;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="height: 10vh;background-color:#0d3b66">
         <div class="container-fluid">
-            <img class="me-4" width="45" height="45" src="https://img.icons8.com/external-smashingstocks-thin-outline-color-smashing-stocks/100/external-Store-ecommerce-and-delivery-smashingstocks-thin-outline-color-smashing-stocks.png" alt="external-Store-ecommerce-and-delivery-smashingstocks-thin-outline-color-smashing-stocks" />
+            <img class="me-4" width="50" height="50" src="https://img.icons8.com/external-smashingstocks-thin-outline-color-smashing-stocks/100/external-Store-ecommerce-and-delivery-smashingstocks-thin-outline-color-smashing-stocks.png" alt="external-Store-ecommerce-and-delivery-smashingstocks-thin-outline-color-smashing-stocks" />
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -40,21 +41,21 @@
                 <a asp-area="" asp-controller="Home" asp-action="contactus">تماس با ما</a>
                 <form class="d-flex me-lg-5" style="width: 30%;">
                     <input class="me-2 " id="textsearch" type="search" placeholder="جستجو کنید..."
-                           aria-label="Search" style="width:130%;height: 5vh;background-color: rgba(200, 200, 200, 0.61);padding: 5px;border-radius: 5px;border-style: none;">
-                    <a onclick="Searchproducte()"  class="" style="text-decoration: none;
-          background-color: blueviolet;color: white;
+                           aria-label="Search" style="width:130%;height: 5vh;background-color:white;padding: 5px;border-radius: 5px;border-style: none;">
+                    <a  onclick="Searchproducte()"  class="" style="text-decoration: none;
+          background-color:#ef233c;color: white;
           display: block;padding-right: 20px;padding-left: 20px;padding-top: 8px !important;border-radius: 5px;font-size:13px;">جستجو</a>
                 </form>
                 <div 
-                    id="logout">
-                    <a asp-area="" asp-controller="Home" asp-action="SignUp" class="" style="text-decoration: none;
-          background-color: rgb(56, 122, 255);color: white;
-          display: block;padding-right: 15px;padding-left: 15px;padding-top: 10px;border-radius: 5px;font-size:12px;">ورود / ثبت نام</a>
+                    id="logout" class="me-3">
+                    <a asp-area="" asp-controller="Home" asp-action="SignUp" class="text-center" style="text-decoration: none;
+          background-color:#ffd400;color: black;
+          display: block;padding-right: 15px;padding-left: 15px;width:110px;height:35px;padding-top:10px;padding-bottom:10px;border-radius: 5px;font-size:12px;">ورود / ثبت نام</a>
 
                 
                 </div>
                 <div id="login">
-                    <a asp-controller="Home" asp-action="Cart" class="" style="text-decoration: none;
+                    <a asp-area="" asp-controller="Home" asp-action="Cart" class="" style="text-decoration: none;
 background-color: rgb(255, 255, 255);color: rgb(0, 0, 0);
 display: block;padding-right: 15px;padding-left: 15px;padding-top: 4px;border-radius: 5px;font-size:12px;border-style: solid ;border-width: 2px;border-color: blue;">سبد خرید<img class="me-1 mb-1" width="25" height="25" src="https://img.icons8.com/ios/50/7950F2/shopify.png" alt="shopify" /></a>
                 </div>
@@ -74,7 +75,7 @@ display: block;padding-right: 15px;padding-left: 15px;padding-top: 4px;border-ra
     <div class="">
         <!-- Footer -->
         <footer class="text-center text-lg-start text-white"
-                style="background-color:#7071E8">
+                style="background-color:#0d3b66">
             <!-- Grid container -->
             <div class="container p-4 pb-0">
                 <!-- Section: Links -->

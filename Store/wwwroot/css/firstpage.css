@@ -16,9 +16,9 @@ font-family: 'B Nazanin' !important;
 
 .menu a {
     text-decoration: none;
-    font-size: 13px;
+    font-size: 14px;
     margin-right: 20px;
-    color: black;
+    color: white;
     
 }
 
@@ -74,7 +74,7 @@ font-family: 'B Nazanin' !important;
     }
 
     .section1dakhdli a {
-        background-color: #ff2323;
+        background-color: #9800ff;
         padding: 6px 25px;
         border-radius: 3px;
         margin-right: 40px;
@@ -203,20 +203,25 @@ font-family: 'B Nazanin' !important;
 }
 
 .product a {
-    background-color: rgb(255, 0, 98);
+    background-color: #4c956c;
     color: white;
     font-size: 12px;
     padding: 10px 20px;
+    width:30px;
+    height:30%;
     border-radius: 5px;
 }
 
 .submittiket {
-    background-color: #39d400;
+    background-color: #d80032;
     text-decoration: none;
     color: white !important;
-    font-size: 13px;
-    padding: 5px 22px;
+    font-size: 15px;
+    padding: 8px 22px;
     border-radius: 5px;
+    width: 15%;
+    height: 12%;
+    display: block;
 }
 
 

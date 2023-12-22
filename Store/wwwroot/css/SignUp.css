@@ -18,14 +18,16 @@
 }
 
 .background {
-    background-color: #FFC436 !important;
+    background-color: #ffa62b !important;
     border: none !important;
+    color: white !important;
+    font-family: 'IranSans';
 }
 
 .veen {
     width: 70%;
     margin: 100px auto;
-    background: green;
+    background: #0e9594;
     min-height: 400px;
     display: table;
     position: relative;
@@ -74,6 +76,7 @@
         box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
         transition: all .5s;
         overflow: hidden;
+        padding-right:5%;
     }
 
     .veen .wrapper > form {

@@ -1,72 +1,16 @@
 ﻿@{
     ViewData["Title"] = "SignUp";
 	<link rel="stylesheet" href="~/css/SignUp.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/global.css" />
+    <link rel="stylesheet" href="~/css/site.css">
     Layout = null;
    
 }
-@*    <div class="body">
-        <div class="veen bg-success">
-            <div class="login-btn splits">
-                <p>به فروشگاه بهاره خوش آمدید</p>
-                <button class="active background text-white">ورود</button>
-            </div>
-            <div class="rgstr-btn splits">
-                <p>آیا شما حساب کاربری ندارید؟</p>
-                <button class="background text-white">ثبت نام</button>
-            </div>
-            <div class="wrapper">
-                <form id="login" tabindex="500">
-                    <h3 class="text-black ">ورود</h3>
-                    <div class="mail">
-                        <input type="text" name="" id="username">
-                        <label>ایمیل یا نام کاربری</label>
-                    </div>
-                    <div class="passwd">
-                        <input type="password" name="" id="password">
-                        <label>رمز عبور</label>
-                    </div>
-                    <div class="submit">
-                        <a href="#" class="dark " onclick="Login()" >ورود</a>
-                        <button class="text-danger">فراموشی رمز عبور</button>
-                    </div>
-
-                </form>
-                <form id="register" tabindex="502" class="pt-5">
-                    <h3 class="text-black mt-5">ثبت نام</h3>
-                    <div class="name">
-                        <input type="text" name="" id="name">
-                        <label>نام</label>
-                    </div>
-                    <div class="name">
-                        <input type="text" name="" id="familyname">
-                        <label>نام خانوادگی</label>
-                    </div>
-                    <div class="name">
-                        <input type="text" name="" id="phonenumber">
-                        <label>شماره تلفن</label>
-                    </div>
-                    <div class="uid">
-                        <input type="text" name="" id="usernameregister">
-                        <label>نام کاربری(کد ملی)</label>
-                    </div>
-                    <div class="passwd">
-                        <input type="password" name="" id="passwordregister"> 
-                        <label>رمز عبور(کد ملی)</label>
-                    </div>
-                    <div class="submit mt-3">
-                        <a href="#" class="dark" onclick="Register()">ثبت نام</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="wwwroot/lib/jquery/dist/jquery.min.js"></script>
-<script src="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/helpers/ajax.js"></script>
-<script src="~/js/SignUp.js"></script>*@
-
+<style>
+    a{
+        font-family: 'IranSans';
+    }
+</style>
 <body>
     <div class="body">
         <div class="veen bg-success">
@@ -78,10 +22,10 @@
                 <p>آیا شما حساب کاربری ندارید؟</p>
                 <button class="background text-white">ثبت نام</button>
             </div>
-            <div class="wrapper">
-                <form id="login" tabindex="500">
+            <div class="wrapper ">
+                <form id="login" tabindex="500" >
                     <h3 class="text-black ">ورود</h3>
-                    <div class="mail">
+                    <div class="mail ">
                         <input type="text" name="" id="username">
                         <label>ایمیل یا نام کاربری</label>
                     </div>
@@ -89,14 +33,14 @@
                         <input type="password" name="" id="password">
                         <label>رمز عبور</label>
                     </div>
-                    <div class="submit">
+                    <div class="submit pt-5">
                         <a href="#" class="dark " onclick="Login()">ورود</a>
-                        <button class="text-danger">فراموشی رمز عبور</button>
+                       @* <button class="text-danger">فراموشی رمز عبور</button>*@
                     </div>
 
                 </form>
-                <form id="register" tabindex="502" class="pt-5">
-                    <h3 class="text-black mt-5">ثبت نام</h3>
+                <form id="register" tabindex="502" >
+                    <h3 class="text-black mt-5 mb-3">ثبت نام</h3>
                     <div class="name">
                         <input type="text" name="" id="name">
                         <label>نام</label>
@@ -117,7 +61,7 @@
                         <input type="password" name="" id="passwordregister">
                         <label>رمز عبور(کد ملی)</label>
                     </div>
-                    <div class="submit pt-3">
+                    <div class="submit ">
                         <a href="#" class="dark" onclick="Register()">ثبت نام</a>
                     </div>
                 </form>

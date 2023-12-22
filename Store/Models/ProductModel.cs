@@ -91,9 +91,9 @@
     public class GetShowSingleProducts
     {
         public int Id { get; set; }
-        public int BrandId { get; set; }
-        public int CountryId { get; set; }
-        public int CategoryId { get; set; }
+        public string BrandName { get; set; }
+        public string CountryName{ get; set; }
+        public string CategoryName { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
         public string ImageURL { get; set; }
