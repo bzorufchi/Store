@@ -53,7 +53,7 @@ namespace Store.API
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+                using (SqlConnection conn = new SqlConnection("Integrated Security=true;Persist Security Info=False;Initial Catalog=store;Data Source=. ;TrustServerCertificate=True;"))
                 using (SqlCommand cmd = new SqlCommand("dbo.sp_AddComments", conn))
                 {
                     conn.Open();
@@ -158,7 +158,7 @@ namespace Store.API
         public List<GetProductComments> GetProductComments([FromBody]int ProductId)
         {
             List<GetProductComments> list = new List<GetProductComments>();
-            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlConnection conn = new SqlConnection("Integrated Security=true;Persist Security Info=False;Initial Catalog=store;Data Source=. ;TrustServerCertificate=True;"))
             using (SqlCommand cmd = new SqlCommand("dbo.sp_GetProductComments", conn))
             {
                 conn.Open();

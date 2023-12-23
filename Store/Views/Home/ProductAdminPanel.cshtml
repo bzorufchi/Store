@@ -35,27 +35,33 @@
        <div>
             <div class="d-flex text-center">
                 <p>
-                    <select name="Brands" id="Brands" style="width:120%">
+                    <select name="Brands" id="Brands" style="width:160%" class="me-3">
                      
 
                     </select>
                 </p>
                 <p>
-                    <select name="Country" id="Country" style="width:120%">
+                    <select name="Country" id="Country" style="width:110%" class="me-5 ms-5">
                        
 
                     </select>
                 </p>
                 <p>
-                    <select name="categoryes" id="categoryes" style="width:120%">
+                    <select name="categoryes" id="categoryes" style="width:120%;" class="me-5">
                     </select>
                 </p>
             </div>
        </div>
         <div class="d-flex">
          
-            <p><input id="Count" type="text" placeholder="تعداد"></p>
-            <p><input id="IsActive" type="text" placeholder="موجود"></p>
+           @* <p><input type="number" id="Count" placeholder="تعداد"></p>*@
+            <p class="pe-4">
+                <select name="cars" id="IsActive" class="" style="width:300%;">
+                    <option value="1">فعال</option>
+                    <option value="0">غیرفعال</option>
+                </select>
+            </p>
+            <div style="margin-right:20%;width:50%;"><p class="pe-5 me-5"><input type="number" id="Count" name="quantity" min="1" max="20"></p></div>
        </div>
         <div class="d-flex mb-4">
             <input id="ImageURL" type="file"  name="myfile" multiple>

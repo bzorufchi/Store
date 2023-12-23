@@ -41,7 +41,7 @@ function afterGetShoppingCard(param) {
             <tr>
                 <td>${i+1}</td>
                 <td>${param.serverResponse[i].productName}</td>
-                <td>${param.serverResponse[i].count}</td>
+                <td><button type="button" onclick="UpdateCount(${param.serverResponse[i].orderId},1)">+</button>${param.serverResponse[i].count}<button type="button"  onclick="UpdateCount(${param.serverResponse[i].orderId},-1)">-</button></td>
                 <td>${param.serverResponse[i].fixedPrice}</td>
                 <td><a class="bg-danger pt-1 pb-1 pe-3 ps-3 rounded rounded-2" onclick="DeleteOrder(${param.serverResponse[i].orderId})" style="text-decoration: none;color: white;">حذف از سبد</a></td>
             </tr>
@@ -51,6 +51,19 @@ function afterGetShoppingCard(param) {
       
 	}
 	document.getElementById('shopcard').innerHTML = shopingcard
+}
+function UpdateCount(OrderId, Number){
+	var param = {
+
+	}
+	var input = {
+		OrderId: OrderId,
+		Number: Number
+	}
+	callAjax(`Orders/UpdateCount`, input, afterUpdateCount, param, 'post')
+}
+function afterUpdateCount(param) {
+	window.location.reload();
 }
 
 function DeleteOrder(Orderid) {

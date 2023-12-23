@@ -49,7 +49,7 @@ namespace Store.API
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+                using (SqlConnection conn = new SqlConnection("Integrated Security=true;Persist Security Info=False;Initial Catalog=store;Data Source=. ;TrustServerCertificate=True;"))
                 using (SqlCommand cmd = new SqlCommand("dbo.sp_AddProduct", conn))
                 {
                     conn.Open();
@@ -90,7 +90,7 @@ namespace Store.API
         public List<GetAllCategory> GetAllCategory()
         {
             List<GetAllCategory> list = new List<GetAllCategory>();
-            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlConnection conn = new SqlConnection("Integrated Security=true;Persist Security Info=False;Initial Catalog=store;Data Source=. ;TrustServerCertificate=True;"))
             using (SqlCommand cmd = new SqlCommand("dbo.sp_GetAllCategory", conn))
             {
                 conn.Open();
@@ -115,7 +115,7 @@ namespace Store.API
         public List<GetAllCountry> GetAllCountry()
         {
             List<GetAllCountry> list = new List<GetAllCountry>();
-            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlConnection conn = new SqlConnection("Integrated Security=true;Persist Security Info=False;Initial Catalog=store;Data Source=. ;TrustServerCertificate=True;"))
             using (SqlCommand cmd = new SqlCommand("dbo.sp_GetAllCountry", conn))
             {
                 conn.Open();
@@ -140,7 +140,7 @@ namespace Store.API
         public List<GetAllBrands> GetAllBrands()
         {
             List<GetAllBrands> list = new List<GetAllBrands>();
-            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlConnection conn = new SqlConnection("Integrated Security=true;Persist Security Info=False;Initial Catalog=store;Data Source=. ;TrustServerCertificate=True;"))
             using (SqlCommand cmd = new SqlCommand("dbo.sp_GetAllBrands", conn))
             {
                 conn.Open();
@@ -263,7 +263,7 @@ namespace Store.API
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+                using (SqlConnection conn = new SqlConnection("Integrated Security=true;Persist Security Info=False;Initial Catalog=store;Data Source=. ;TrustServerCertificate=True;"))
                 using (SqlCommand cmd = new SqlCommand("dbo.sp_DeleteProduct", conn))
                 {
                     conn.Open();
@@ -344,7 +344,7 @@ namespace Store.API
         public List<GetLastProductsOutput> GetLastProducts([FromBody] int count)
         {
             List<GetLastProductsOutput> list = new List<GetLastProductsOutput>();
-            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlConnection conn = new SqlConnection("Integrated Security=true;Persist Security Info=False;Initial Catalog=store;Data Source=. ;TrustServerCertificate=True;"))
             using (SqlCommand cmd = new SqlCommand("dbo.sp_GetLastProducts", conn))
             {
                 conn.Open();
@@ -372,7 +372,7 @@ namespace Store.API
         public List<GetMaxProductLikeOutput> GetMaxProductLike([FromBody] int count)
         {
             List<GetMaxProductLikeOutput> list = new List<GetMaxProductLikeOutput>();
-            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlConnection conn = new SqlConnection("Integrated Security=true;Persist Security Info=False;Initial Catalog=store;Data Source=. ;TrustServerCertificate=True;"))
             using (SqlCommand cmd = new SqlCommand("dbo.sp_GetMaxProductLike", conn))
             {
                 conn.Open();
@@ -404,7 +404,7 @@ namespace Store.API
         public List<GetShowAllProductsOutput> GetShowAllProducts([FromBody] int count)
         {
             List<GetShowAllProductsOutput> list = new List<GetShowAllProductsOutput>();
-            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlConnection conn = new SqlConnection("Integrated Security=true;Persist Security Info=False;Initial Catalog=store;Data Source=. ;TrustServerCertificate=True;"))
             using (SqlCommand cmd = new SqlCommand("dbo.sp_GetShowProduct", conn))
             {
                 conn.Open();
@@ -432,7 +432,7 @@ namespace Store.API
         public List<GetShowAllProductsOutput> ProductAdminPanel([FromBody] int count)
         {
             List<GetShowAllProductsOutput> list = new List<GetShowAllProductsOutput>();
-            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlConnection conn = new SqlConnection("Integrated Security=true;Persist Security Info=False;Initial Catalog=store;Data Source=. ;TrustServerCertificate=True;"))
             using (SqlCommand cmd = new SqlCommand("dbo.sp_GetShowProduct", conn))
             {
                 conn.Open();
@@ -461,7 +461,7 @@ namespace Store.API
         public List<GetShowAllProductsOutput> searchProductsByStr([FromBody] string Str)
         {
             List<GetShowAllProductsOutput> list = new List<GetShowAllProductsOutput>();
-            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlConnection conn = new SqlConnection("Integrated Security=true;Persist Security Info=False;Initial Catalog=store;Data Source=. ;TrustServerCertificate=True;"))
             using (SqlCommand cmd = new SqlCommand("dbo.sp_searchProductsByStr", conn))
             {
                 conn.Open();
@@ -490,7 +490,7 @@ namespace Store.API
         public GetShowSingleProducts GetShowSingleProducts([FromBody] int count)
         {
             GetShowSingleProducts product = new GetShowSingleProducts();
-            using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+            using (SqlConnection conn = new SqlConnection("Integrated Security=true;Persist Security Info=False;Initial Catalog=store;Data Source=. ;TrustServerCertificate=True;"))
             using (SqlCommand cmd = new SqlCommand("dbo.sp_GetShowSingleProduct", conn))
             {
                 conn.Open();

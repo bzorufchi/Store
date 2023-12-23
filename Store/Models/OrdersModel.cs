@@ -58,4 +58,9 @@ namespace Store.Models
         public int count { get; set; }
         public int FixedPrice { get; set; }
     }
+    public class UpdateCountModel
+    {
+        public int OrderId { get; set; }
+        public int Number { get; set; }
+    }
 }

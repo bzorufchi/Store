@@ -128,6 +128,30 @@ namespace Store.API
                 }
             }
         }
+
+        [HttpPost("UpdateCount")]
+        public bool UpdateCount(UpdateCountModel input)
+        {
+            if (input.OrderId == 0)
+            {
+                throw new Exception("");
+            }
+            else
+            {
+
+                var Orders = context.Orders.Where(o => o.Id ==input.OrderId).FirstOrDefault();
+                if (Orders == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    Orders.count =Orders.count+input.Number;
+                    context.SaveChanges();
+                    return true;
+                }
+            }
+        }
         [HttpPost("DeleteOrders")]
         public string DeleteOrders(DeleteOrders input)
         {
@@ -158,7 +182,7 @@ namespace Store.API
             try
             {
                 int result = 0;
-                using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+                using (SqlConnection conn = new SqlConnection("Integrated Security=true;Persist Security Info=False;Initial Catalog=store;Data Source=. ;TrustServerCertificate=True;"))
                 using (SqlCommand cmd = new SqlCommand("dbo.sp_InsertShoppingCard", conn))
                 {
                     conn.Open();
@@ -196,7 +220,7 @@ namespace Store.API
 
             {
                 List<GetShoppingCard> list = new List<GetShoppingCard>();
-                using (SqlConnection conn = new SqlConnection("Data Source=82.99.242.155;Initial Catalog=store;User ID=sa;Password=andIShe2019$$; Trust Server Certificate=true;"))
+                using (SqlConnection conn = new SqlConnection("Integrated Security=true;Persist Security Info=False;Initial Catalog=store;Data Source=. ;TrustServerCertificate=True;"))
                 using (SqlCommand cmd = new SqlCommand("dbo.sp_GetShoppingCard", conn))
                 {
                     conn.Open();
